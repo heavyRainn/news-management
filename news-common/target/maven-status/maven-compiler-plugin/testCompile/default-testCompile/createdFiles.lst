@@ -1,0 +1,11 @@
+com\epam\newsmanagement\dao\impl\UserDaoImplTest.class
+com\epam\newsmanagement\dao\impl\CommentDaoImplTest.class
+com\epam\newsmanagement\service\NewsServiceImplTest.class
+com\epam\newsmanagement\service\TagServiceImplTest.class
+com\epam\newsmanagement\config\NewspaperConfigTest.class
+com\epam\newsmanagement\dao\impl\AuthorDaoImplTest.class
+com\epam\newsmanagement\dao\impl\TagDaoImplTest.class
+com\epam\newsmanagement\service\AuthorServiceTest.class
+com\epam\newsmanagement\dao\impl\NewsDaoImplTest.class
+com\epam\newsmanagement\service\UserServiceImplTest.class
+com\epam\newsmanagement\service\CommentServiceTest.class

@@ -1,0 +1,90 @@
+.logoutLblPos {
+    position: fixed;
+    right: 40px;
+    top: 40px;
+}
+
+#menu-v li, #menu-v a {
+    zoom: 1;
+}
+
+/* Hacks for IE6, IE7 */
+#menu-v, #menu-v ul {
+    width: 180px; /* Main Menu Item widths */
+    border: 1px solid #ccc;
+    border-top: none;
+    position: relative;
+    font-size: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    z-index: 9;
+}
+
+#menu-v li a {
+    font: normal 12px Arial;
+    border-top: 1px solid #ccc;
+    display: block;
+    color: black;
+    text-decoration: none;
+    line-height: 26px;
+    padding-left: 26px;
+}
+
+#menu-v li:hover {
+    background: grey;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+}
+
+#menu-v ul li a {
+    line-height: 30px;
+}
+
+#menu-v li ul {
+    position: absolute;
+    width: 200px; /*Sub Menu Items width */
+    visibility: hidden;
+}
+
+#news-container, #tags-form, #authors-form {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+#creation-form {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+a.previous_link {
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
+
+}
+
+a.next_link {
+    position: fixed;
+    right: 30px;
+    bottom: 50px;
+}
+
+.pagination li {
+    display:inline-block;
+    padding:5px;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <!-- Base Definition -->
+    <definition name="base-definition"
+                template="/WEB-INF/views/tiles/layouts/defaultLayout.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultHeader.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp"/>
+    </definition>
+
+    <!-- Home Page -->
+    <definition name="home" extends="base-definition">
+        <put-attribute name="title" value="Home"/>
+        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp"/>
+    </definition>
+
+    <!-- Concrete news Page -->
+    <definition name="concreteNews" extends="base-definition">
+        <put-attribute name="title" value="Concrete news"/>
+        <put-attribute name="body" value="/WEB-INF/views/pages/concreteNews.jsp"/>
+    </definition>
+
+    <!-- Login Page -->
+    <definition name="login" extends="base-definition">
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/adminHeader.jsp"/>
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp"/>
+    </definition>
+
+</tiles-definitions>

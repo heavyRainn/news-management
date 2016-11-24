@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<commands>
+
+    <command>
+        <value>CHANGE_LOCALE</value>
+        <impl>by.epam.newsmanagement.command.impl.ChangeLocalCommand</impl>
+    </command>
+
+</commands>

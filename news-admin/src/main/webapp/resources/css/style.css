@@ -1,0 +1,23 @@
+body {
+    position: relative;
+    border-left: solid black;
+    border-right: solid black;
+}
+
+header {
+    border-top: solid black;
+    border-bottom: solid black;
+    padding-left: 30px;
+}
+
+footer {
+    border-top: solid black;
+    border-bottom: solid black;
+    position:fixed;
+    left:10px;
+    bottom:8px;
+    height:20px;
+    width:99%;
+    text-align: center;
+}
+
