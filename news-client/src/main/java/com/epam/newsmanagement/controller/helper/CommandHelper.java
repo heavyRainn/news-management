@@ -2,12 +2,15 @@ package com.epam.newsmanagement.controller.helper;
 
 import com.epam.newsmanagement.command.Command;
 import com.epam.newsmanagement.command.impl.UnknownCommand;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 /**
  * Contains all commands and gives it's by name.
  */
+
+@Component
 public final class CommandHelper {
 
     /**

@@ -9,10 +9,11 @@ import org.apache.log4j.Logger;
 /**
  * Helps to initialize map with commands
  */
+
 public class XmlHelper {
 
     private static final Logger logger = Logger.getLogger(XmlHelper.class);
-    private static final String xmlPath = "classpath:cmd.xml";
+    private static final String xmlPath = "C:\\Users\\Andrei_Fiodarau\\IdeaProjects\\news-management\\news-client\\src\\main\\resources\\cmd.xml";
 
     private volatile static XmlHelper instance = null;
 

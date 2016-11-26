@@ -14,32 +14,37 @@
     <c:url value="/addNews" var="addNewsUrl"/>
     <form action="${addNewsUrl}" method="post">
         <p>
-            <label for="title">Title :</label>
-            <input type="text" id="title" name="title"/>
+            <label for="title"><s:message code="label.news.title"/> :</label>
+            <input type="text" id="title" name="title" required/>
         </p>
         <p>
-            <label for="date">Date :</label>
-            <input type="date" id="date" name="date"/>
+            <label for="date"><s:message code="label.news.date"/> :</label>
+            <input type="date" id="date" name="date" required/>
         </p>
         <p>
-            <label for="brief">Brief :</label>
-            <input type="text" id="brief" name="brief"/>
+            <label for="brief"><s:message code="label.news.brief"/> :</label>
+            <input size="100" type="text" id="brief" name="brief" required/>
         </p>
         <p>
-            <label for="content">Content :</label>
-            <input type="text" id="content" name="content"/>
+            <label for="content"><s:message code="label.news.content"/> :</label>
+            <input size="100" ype="text" id="content" name="content" required/>
         </p>
         <p>
-            <select>
+            <select name="theme">
                 <c:forEach items="${allThemes}" var="allThemes">
-                    <option value="1">${allThemes}</option>
+                    <option value="${allThemes}">${allThemes}</option>
+                </c:forEach>
+            </select>
+            <select name="author">
+                <c:forEach items="${allAuthors}" var="allAuthors">
+                    <option value="${allAuthors}">${allAuthors.surname}</option>
                 </c:forEach>
             </select>
         </p>
         <input type="hidden"
                name="${_csrf.parameterName}"
                value="${_csrf.token}"/>
-        <button type="submit" class="btn">Create</button>
+        <button type="submit" class="btn"><s:message code="button.create"/></button>
     </form>
 </div>
 </body>

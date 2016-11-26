@@ -5,7 +5,9 @@
 <html>
 <head>
     <title>Title</title>
-    <style><%@include file="/resources/css/adminLogin.css" %></style>
+    <style>
+        <%@include file="/resources/css/adminLogin.css" %>
+    </style>
 </head>
 
 <body>
@@ -23,17 +25,17 @@
         </p>
     </c:if>
     <p>
-        <label for="username">Login :</label>
-        <input type="text" id="username" name="username"/>
+        <label for="username"><s:message code="label.login"/> :</label>
+        <input type="text" id="username" name="username" required/>
     </p>
     <p>
-        <label for="password">Password :</label>
-        <input type="password" id="password" name="password"/>
+        <label for="password"><s:message code="label.password"/> :</label>
+        <input type="password" id="password" name="password" required/>
     </p>
     <input type="hidden"
            name="${_csrf.parameterName}"
            value="${_csrf.token}"/>
-    <button type="submit" class="btn">Log in</button>
+    <button type="submit" class="btn"><s:message code="button.login"/></button>
 </form>
 
 </body>

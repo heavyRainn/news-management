@@ -31,13 +31,79 @@
                 $('#pager').pagination('getCurrentPage');
             }));
         });
+
+        function showEdit(id) {
+            $("#delete_" + id).show();
+            $("#update_" + id).show();
+            $("#cancel_" + id).show();
+            $("#" + id).prop("disabled", false);
+            $("#edit_" + id).hide();
+        }
+
+        function updateTag(id) {
+            $.post("/news-admin/addTags/update", {id: parseInt(id), text: $("#" + id).val()}, function (result) {
+                console.log("Have response: " + result);
+                if (result == "success") {
+                    $("#tags-form").prepend(successMsg('Tag successfully updated'));
+                    setTimeout(function () {
+                        $(".msg").remove();
+                    }, 5000);
+                    cancelEdit(id);
+                } else if (result == "error") {
+                    alert("Error on server");
+                } else if (result == "exists") {
+                    alert("Tag this id not exists");
+                }
+            });
+        }
+
+        function deleteTag(id) {
+            $.post("/news-admin/addTags/delete", {id: parseInt(id)}, function (result) {
+                console.log("Have response: " + result);
+                if (result == "success") {
+                    $("#tags-form").prepend(successMsg('Tag successfully deleted'));
+                    setTimeout(function () {
+                        $(".msg").remove();
+                    }, 5000);
+                    cancelEdit(id);
+                } else if (result == "error") {
+                    alert("Error on server");
+                } else if (result == "exists") {
+                    alert("Tag this id not exists");
+                }
+            });
+        }
+
+        function cancelEdit(id) {
+            $("#delete_" + id).hide();
+            $("#update_" + id).hide();
+            $("#cancel_" + id).hide();
+            $("#" + id).prop("disabled", true);
+            $("#edit_" + id).show();
+        }
+
+        function successMsg(text) {
+            return '<div class="msg">' + text + '</div>';
+        }
+
     </script>
 </head>
 <body>
+
 <div id="tags-form">
-    <c:forEach items="${allTags}" var="allTags">
+    <c:forEach items="${allTags}" var="tag">
         <p>
-            <c:out value="${allTags.text}"/>
+            <label for="<c:out value="${tag.id}"/>" class="tag-label"><s:message code="label.tag"/> :</label>
+            <input type="text" name="tag" id="<c:out value="${tag.id}"/>" class="tag-input"
+                   value="<c:out value="${tag.text}"/>" disabled/>
+            <a href="#/" id="edit_<c:out value="${tag.id}"/>" class="edit-tag-ref"
+               onclick="showEdit(<c:out value="${tag.id}"/>)"><s:message code="crud.edit"/> </a>
+            <a href="#" id="update_<c:out value="${tag.id}"/>" class="update-tag-ref" hidden
+               onclick="updateTag(<c:out value="${tag.id}"/>)"><s:message code="crud.update"/> </a>
+            <a href="#" id="delete_<c:out value="${tag.id}"/>" class="delete-tag-ref" hidden
+               onclick="deleteTag(<c:out value="${tag.id}"/>)"><s:message code="crud.delete"/> </a>
+            <a href="#" id="cancel_<c:out value="${tag.id}"/>" class="cancel-tag-ref"
+               onclick="cancelEdit(<c:out value="${tag.id}"/>)" hidden><s:message code="crud.cancel"/> </a>
         </p>
     </c:forEach>
     <div id="pager"></div>
@@ -45,15 +111,16 @@
         <c:url value="/addTags" var="addTagsUrl"/>
         <form action="${addTagsUrl}" method="post">
             <p>
-                <label for="value">Text :</label>
-                <input type="text" id="value" name="value"/>
+                <label for="value"><s:message code="label.tag.text"/> :</label>
+                <input type="text" id="value" name="value" required/>
             </p>
             <input type="hidden"
                    name="${_csrf.parameterName}"
                    value="${_csrf.token}"/>
-            <button type="submit" class="btn">Create</button>
+            <button type="submit" class="btn"><s:message code="button.create"/></button>
         </form>
     </div>
 </div>
+
 </body>
 </html>

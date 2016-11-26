@@ -9,6 +9,6 @@
 </head>
 <body>
 <c:set var="language" scope="session" value="en_EN"/>
-<c:redirect url="/login.tiles"/>
+<c:redirect url="logintiles.jsp"/>
 </body>
 </html>

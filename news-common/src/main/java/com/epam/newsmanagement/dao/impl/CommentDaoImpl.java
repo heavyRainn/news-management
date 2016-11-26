@@ -30,12 +30,7 @@ public class CommentDaoImpl implements CrudDao<Comment> {
     private final static String SQL_GET_ALL_COMMENTS_OF_ONE_NEWS = "SELECT COM_ID, COM_MESSAGE,COM_DATE,COM_ID_AUTHOR,COM_ID_NEWS FROM COMMENTS WHERE COM_ID_NEWS = (?)";
     private final static String SQL_UPDATE_COMMENT = "UPDATE COMMENTS SET COM_MESSAGE = ?, COM_DATE = SYSDATE, COM_ID_AUTHOR = ?,COM_ID_NEWS = ? WHERE COM_ID = ?";
     private final static String SQL_DELETE_COMMENT = "DELETE FROM COMMENTS WHERE COM_ID = ?";
-    private final static String SQL_GET_ALL_COMMENTS_PAGINATION = "SELECT COM_ID,COM_MESSAGE,COM_DATE\n" +
-            "  from \n" +
-            "( select rownum rnum, a.*\n" +
-            "    from COMMENTS a\n" +
-            "   where rownum <= ? )\n" +
-            "where rnum >= ?;";
+    private final static String SQL_GET_ALL_COMMENTS_PAGINATION = String.format("SELECT COM_ID,COM_MESSAGE,COM_DATE  from ( select rownum rnum, a.* from COMMENTS a where rownum <= ? )where rnum >= ?;");
 
     public boolean create(Comment comment) throws DaoException {
         logger.info("CommentDaoImpl.create(" + comment.toString() + ")");

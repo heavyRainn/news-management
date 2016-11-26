@@ -9,6 +9,9 @@ public class Tag {
     @Size(min = 1, max = 250)
     private String text;
 
+    public Tag() {
+
+    }
 
     public Tag(String text) {
         this.text = text;

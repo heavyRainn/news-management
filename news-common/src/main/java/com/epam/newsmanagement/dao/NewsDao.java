@@ -16,6 +16,8 @@ public interface NewsDao {
 
     List<News> viewAllNews(Theme theme);
 
+    List<News> viewAllNews(Theme theme, int start, int end);
+
     List<News> viewAllPopularNews();
 
     List<News> viewASingleNews(int id);

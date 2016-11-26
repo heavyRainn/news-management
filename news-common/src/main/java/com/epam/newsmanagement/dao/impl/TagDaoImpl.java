@@ -30,12 +30,7 @@ public class TagDaoImpl implements CrudDao<Tag> {
     private final static String SQL_GET_NEWS_TAGS = "SELECT DISTINCT TAGS.TG_ID,TAGS.TG_MESSAGE FROM TAGS INNER JOIN NEWS_HAVE_TAGS ON TAGS.TG_ID = NEWS_HAVE_TAGS.TG_ID WHERE NEWS_HAVE_TAGS.N_ID = ?";
     private final static String SQL_UPDATE_TAG = "UPDATE TAGS SET TG_MESSAGE = ? WHERE TG_ID = ?";
     private final static String SQL_DELETE_TAG = "DELETE FROM TAGS WHERE TG_ID = ?";
-    private final static String SQL_GET_TAGS_PAGINATION = "SELECT TG_ID,TG_MESSAGE\n" +
-            "  from \n" +
-            "( select rownum rnum, a.*\n" +
-            "    from TAGS a\n" +
-            "   where rownum <= ? )\n" +
-            "where rnum >= ?";
+    private final static String SQL_GET_TAGS_PAGINATION = String.format("SELECT TG_ID,TG_MESSAGE  from ( select rownum rnum, a.* from TAGS a where rownum <= ? ) where rnum >= ?");
 
     public boolean create(Tag tag) throws DaoException {
         logger.info("TagDaoImpl.create(" + tag.toString() + ")");

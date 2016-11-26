@@ -14,6 +14,7 @@ import com.epam.newsmanagement.util.Coder;
 import com.epam.newsmanagement.util.search.NewsSearchCriteria;
 import com.epam.newsmanagement.util.search.NewsSearchType;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -74,7 +75,6 @@ public class Newspaper {
         logger.info("Hashed Password : " + Coder.getHashedPassword(PASSWORD));
 
         logger.info("News query : " + newsService.viewAllNews(6, 9));
-
 
         Md5PasswordEncoder encoder = new Md5PasswordEncoder();
     }

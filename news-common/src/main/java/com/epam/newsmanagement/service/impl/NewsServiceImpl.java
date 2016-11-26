@@ -32,12 +32,16 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> viewAllNews(int start, int end) {
-
         return decorateNews(newsDao.viewAllNews(start, end));
     }
 
     public List<News> viewAllNews(Theme theme) {
         return decorateNews(newsDao.viewAllNews(theme));
+    }
+
+    @Override
+    public List<News> viewAllNews(Theme theme, int start, int end) {
+        return decorateNews(newsDao.viewAllNews(theme, start, end));
     }
 
     public List<News> viewAllPopularNews() {

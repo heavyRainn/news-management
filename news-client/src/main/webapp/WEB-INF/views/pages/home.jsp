@@ -42,12 +42,12 @@
 <div id="filter-form">
     <p>
         <select>
-            <c:forEach items="${sessionScope.allThemes}" var="allThemes">
+            <c:forEach items="${allThemes}" var="allThemes">
                 <option value="${allThemes}">${allThemes}</option>
             </c:forEach>
         </select>
         <select>
-            <c:forEach items="${sessionScope.allAuthors}" var="allAuthors">
+            <c:forEach items="${allAuthors}" var="allAuthors">
                 <option value="${allAuthors}">${allAuthors.surname}</option>
             </c:forEach>
         </select>
@@ -57,28 +57,36 @@
 </div>
 <div id="news-container">
     <ul id="pagination">
-        <c:forEach items="${sessionScope.allNews}" var="allNews">
-            <li>
-                <p><a href="/news-admin/seeNews/${allNews.id}"> <c:out value="${allNews.mainTitle}"/> </a></p>
-                <p><c:out value="${allNews.shortTitle}"/></p>
-                <p><c:out value="${allNews.date}"/></p>
-                <p><c:out value="${allNews.photo}"/></p>
-                <p><c:out value="${allNews.theme}"/></p>
-                <p>
-                    by (<c:forEach items="${allNews.authors}" var="allNewsAuthors">
-                    <c:out value="${allNewsAuthors.name}"/>
-                    <c:out value="${allNewsAuthors.surname}"/>
-                </c:forEach>)
-                </p>
-                <p>
-                    <c:forEach items="${allNews.tags}" var="allNewsTags">
-                        <c:out value="${allNewsTags.text}"/>
-                    </c:forEach>
-                </p>
-            </li>
+        <c:forEach items="${allNews}" var="allNews">
+            <form action="news-client" id="${allNews.id}" method="post">
+                <li>
+                    <p><a href="#" onclick="document.getElementById('${allNews.id}').submit();"> <c:out
+                            value="${allNews.mainTitle}"/> </a></p>
+                    <input type="hidden" name="newsId" value="${allNews.id}"/>
+                    <p><c:out value="${allNews.shortTitle}"/></p>
+                    <p><c:out value="${allNews.date}"/></p>
+                    <p><c:out value="${allNews.photo}"/></p>
+                    <p><c:out value="${allNews.theme}"/></p>
+                    <p>
+                        by (<c:forEach items="${allNews.authors}" var="allNewsAuthors">
+                        <c:out value="${allNewsAuthors.name}"/>
+                        <c:out value="${allNewsAuthors.surname}"/>
+                    </c:forEach>)
+                    </p>
+                    <p>
+                        <c:forEach items="${allNews.tags}" var="allNewsTags">
+                            <c:out value="${allNewsTags.text}"/>
+                        </c:forEach>
+                    </p>
+                </li>
+                <input type="hidden" name="command" value="concrete-news"/>
+            </form>
         </c:forEach>
     </ul>
-    <div id="pager"></div>
+    <form action="news-client" id="pagination-form" method="post">
+        <div id="pager"></div>
+        <input type="hidden" name="command" value="pagination"/>
+    </form>
 </div>
 </body>
 

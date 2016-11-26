@@ -1,14 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 
 <head>
     <title>Home page</title>
-    <style>
-        <%@include file="/resources/css/home.css" %>
-    </style>
     <style>
         <%@include file="/resources/css/simplePagination.css" %>
     </style>
@@ -28,13 +26,40 @@
         });
 
         $(function () {
-            $('#pager').pagination('selectPage', $(function () {
+            $('#pager').pagination('selectPage', (function () {
                 $('#pager').pagination('getCurrentPage');
             }));
         });
+
+        function reset() {
+            location.reload();
+        }
     </script>
 </head>
 <body>
+
+<div id="filter-form">
+    <c:url value="/filterNews" var="filterNewsUrl"/>
+    <form action="${filterNewsUrl}" method="post">
+        <p>
+            <select name="theme">
+                <c:forEach items="${allThemes}" var="allThemes">
+                    <option value="${allThemes}">${allThemes}</option>
+                </c:forEach>
+            </select>
+            <select name="author">
+                <c:forEach items="${allAuthors}" var="allAuthors">
+                    <option value="${allAuthors}">${allAuthors.surname}</option>
+                </c:forEach>
+            </select>
+            <input type="hidden"
+                   name="${_csrf.parameterName}"
+                   value="${_csrf.token}"/>
+            <button style="width:123px" type="submit" class="btn1"><s:message code="button.filter"/></button>
+        </p>
+    </form>
+</div>
+<button id="resetButton" onclick="reset()"><s:message code="button.reset"/></button>
 <div id="news-container">
     <ul id="pagination">
         <c:forEach items="${allNews}" var="allNews">
@@ -45,7 +70,7 @@
                 <p><c:out value="${allNews.photo}"/></p>
                 <p><c:out value="${allNews.theme}"/></p>
                 <p>
-                    by (<c:forEach items="${allNews.authors}" var="allNewsAuthors">
+                    <s:message code="label.authors"/> (<c:forEach items="${allNews.authors}" var="allNewsAuthors">
                     <c:out value="${allNewsAuthors.name}"/>
                     <c:out value="${allNewsAuthors.surname}"/>
                 </c:forEach>)

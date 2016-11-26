@@ -19,13 +19,14 @@
         <plugins>
 
             <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
             </plugin>
 
         </plugins>
@@ -36,11 +37,32 @@
 
         <logger.version>1.2.17</logger.version>
         <jstl.version>1.2</jstl.version>
-        <servlet.version>3.0.1</servlet.version>
+        <servlet.version>3.1.0</servlet.version>
+        <apache.tiles.extras.version>3.0.5</apache.tiles.extras.version>
+        <spring.version>3.2.8.RELEASE</spring.version>
+        <spring.security.version>3.2.3.RELEASE</spring.security.version>
 
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>4.3.3.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>4.3.3.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.0.7.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>log4j</groupId>
@@ -49,16 +71,44 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${servlet.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- news-common -->
+        <dependency>
+            <groupId>com.epam</groupId>
+            <artifactId>news-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Apache Tiles -->
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-extras</artifactId>
+            <version>${apache.tiles.extras.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.3.3.RELEASE</version>
+        </dependency>
+
 
     </dependencies>
 

@@ -1,10 +1,28 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <commands>
 
     <command>
         <value>CHANGE_LOCALE</value>
-        <impl>by.epam.newsmanagement.command.impl.ChangeLocalCommand</impl>
+        <impl>com.epam.newsmanagement.command.impl.ChangeLocalCommand</impl>
+    </command>
+
+    <command>
+        <value>LOGIN</value>
+        <impl>com.epam.newsmanagement.command.impl.LoginCommand</impl>
+    </command>
+
+    <command>
+        <value>LOGOUT</value>
+        <impl>com.epam.newsmanagement.command.impl.LogoutCommand</impl>
+    </command>
+
+    <command>
+        <value>PAGINATION</value>
+        <impl>com.epam.newsmanagement.command.impl.PaginationCommand</impl>
+    </command>
+
+    <command>
+        <value>CONCRETE_NEWS</value>
+        <impl>com.epam.newsmanagement.command.impl.ConcreteNewsCommand</impl>
     </command>
 
 </commands>

@@ -1,6 +1,7 @@
 package com.epam.newsmanagement.controller;
 
 import com.epam.newsmanagement.entity.Comment;
+import com.epam.newsmanagement.exception.CreationCommentException;
 import com.epam.newsmanagement.service.CrudService;
 import com.epam.newsmanagement.service.UserService;
 import org.apache.log4j.Logger;
@@ -48,10 +49,10 @@ public class NewsmanagementCommentsController {
 
         comment.setDate(date);
 
-        commentService.create(comment);
-        
-        logger.info("NewsmanagementCommentsController.add : " + comment.getId() + " , " + comment.getText() + " , " + comment.getDate() + " , " + comment.getUserId() + " , " + comment.getNewsId());
-
-        return comment;
+        if(commentService.create(comment)){
+            return comment;
+        }else {
+           throw new CreationCommentException(comment.toString());
+        }
     }
 }

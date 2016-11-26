@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" time="4.24" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" time="2.788" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_77\jre\bin"/>
@@ -62,10 +62,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testDeleteQuery" time="0.61"/>
-  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testRead" time="0.5"/>
-  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testReadById" time="0.926"/>
-  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testCreate" time="0.629"/>
-  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testDelete" time="0.868"/>
-  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testUpdate" time="0.707"/>
+  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testDeleteQuery" time="0.464"/>
+  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testRead" time="0.435"/>
+  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testReadById" time="0.479"/>
+  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testCreate" time="0.489"/>
+  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testDelete" time="0.469"/>
+  <testcase classname="com.epam.newsmanagement.dao.impl.CommentDaoImplTest" name="testUpdate" time="0.452"/>
 </testsuite>

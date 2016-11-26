@@ -4,13 +4,42 @@
     top: 40px;
 }
 
+.error {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #a94442;
+    background-color: #f2dede;
+}
+
+.msg {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #31708f;
+    background-color: #d9edf7;
+}
+
+.localization{
+    position: fixed;
+    right: 50px;
+    top: 70px;
+}
+
+#resetButton{
+    position: fixed;
+    right: 52.2%;
+    top: 12.18%;
+}
+
 #menu-v li, #menu-v a {
     zoom: 1;
 }
 
-/* Hacks for IE6, IE7 */
 #menu-v, #menu-v ul {
-    width: 180px; /* Main Menu Item widths */
+    width: 180px;
     border: 1px solid #ccc;
     border-top: none;
     position: relative;
@@ -45,13 +74,13 @@
 
 #menu-v li ul {
     position: absolute;
-    width: 200px; /*Sub Menu Items width */
+    width: 200px;
     visibility: hidden;
 }
 
-#news-container, #tags-form, #authors-form {
+#news-container, #tags-form, #authors-form ,#creation-form{
     position: absolute;
-    width: 70%;
+    width: 65%;
     height: 70%;
     margin: auto;
     top: 0;
@@ -60,10 +89,10 @@
     right: 0;
 }
 
-#creation-form {
+#filter-form {
     position: absolute;
-    width: 70%;
-    height: 70%;
+    width: 40%;
+    height: 80%;
     margin: auto;
     top: 0;
     left: 0;

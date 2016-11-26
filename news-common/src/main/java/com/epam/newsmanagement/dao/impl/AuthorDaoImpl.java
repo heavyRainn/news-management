@@ -26,18 +26,11 @@ public class AuthorDaoImpl implements CrudDao<Author> {
     private static final Logger logger = Logger.getLogger(AuthorDaoImpl.class);
 
     private final static String SQL_GET_ALL_AUTHORS = "SELECT DISTINCT ATR_ID,ATR_NAME,ATR_SURNAME FROM AUTHORS";
-    private final static String SQL_GET_ALL_AUTHORS_OF_ONE_NEWS = "SELECT DISTINCT AUTHORS.ATR_ID,AUTHORS.ATR_NAME,AUTHORS.ATR_SURNAME" +
-            " FROM AUTHORS INNER JOIN NEWS_HAVE_AUTHORS ON AUTHORS.ATR_ID = NEWS_HAVE_AUTHORS.ATR_ID WHERE " +
-            " NEWS_HAVE_AUTHORS.N_ID = ?";
+    private final static String SQL_GET_ALL_AUTHORS_OF_ONE_NEWS = String.format("SELECT DISTINCT AUTHORS.ATR_ID,AUTHORS.ATR_NAME,AUTHORS.ATR_SURNAME FROM AUTHORS INNER JOIN NEWS_HAVE_AUTHORS ON AUTHORS.ATR_ID = NEWS_HAVE_AUTHORS.ATR_ID WHERE  NEWS_HAVE_AUTHORS.N_ID = ?");
     private final static String SQL_CREATE_AUTHOR = "INSERT INTO AUTHORS (ATR_ID, ATR_NAME,ATR_SURNAME) VALUES (null,?,?)";
     private final static String SQL_UPDATE_AUTHOR = "UPDATE AUTHORS SET ATR_NAME = ?, ATR_SURNAME = ? WHERE ATR_ID = ?";
     private final static String SQL_DELETE_AUTHOR = "DELETE FROM AUTHORS WHERE ATR_ID = ?";
-    private final static String SQL_GET_ALL_AUTHORS_PAGINATION = "SELECT ATR_ID,ATR_NAME,ATR_SURNAME\n" +
-            "  from \n" +
-            "( select rownum rnum, a.*\n" +
-            "    from AUTHORS a\n" +
-            "   where rownum <= ? )\n" +
-            "where rnum >= ?";
+    private final static String SQL_GET_ALL_AUTHORS_PAGINATION = "SELECT ATR_ID,ATR_NAME,ATR_SURNAME from ( select rownum rnum, a.* from AUTHORS a where rownum <= ? ) where rnum >= ?";
 
     public boolean create(Author author) throws DaoException {
         logger.info("AuthorDaoImpl.create(" + author.toString() + ")");

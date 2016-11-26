@@ -24,6 +24,10 @@ public class Comment {
 
     private int newsId;
 
+    public Comment() {
+
+    }
+
     public Comment(String text, Date date) {
         this.text = text;
         this.date = date;

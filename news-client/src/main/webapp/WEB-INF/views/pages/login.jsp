@@ -11,7 +11,7 @@
 
 <body>
 
-<form action="news-client" id="login-form" method="post">
+<form action="${pageContext.request.contextPath}/news-client" id="login-form" method="post">
     <p>
         <label for="login">Login :</label>
         <input type="text" id="login" name="login"/>

@@ -2,6 +2,7 @@ package com.epam.newsmanagement.command.impl;
 
 import com.epam.newsmanagement.command.Command;
 import com.epam.newsmanagement.exception.CommandException;
+import org.springframework.context.ApplicationContext;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,5 +22,4 @@ public class ChangeLocalCommand implements Command {
 
         return page;
     }
-
 }

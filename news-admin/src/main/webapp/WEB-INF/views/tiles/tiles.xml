@@ -20,6 +20,12 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp"/>
     </definition>
 
+    <!-- Filter Home Page -->
+    <definition name="filterHome" extends="base-definition">
+        <put-attribute name="title" value="Home"/>
+        <put-attribute name="body" value="/WEB-INF/views/pages/filterHome.jsp"/>
+    </definition>
+
     <!-- Concrete news Page -->
     <definition name="concreteNews" extends="base-definition">
         <put-attribute name="title" value="Concrete news"/>

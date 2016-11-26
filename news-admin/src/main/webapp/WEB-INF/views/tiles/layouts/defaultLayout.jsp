@@ -5,6 +5,7 @@
 <html>
 
 <head>
+
     <style>
         <%@include file="/resources/css/style.css" %>
     </style>

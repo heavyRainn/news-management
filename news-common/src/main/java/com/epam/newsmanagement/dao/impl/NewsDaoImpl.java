@@ -40,6 +40,7 @@ public class NewsDaoImpl implements NewsDao {
     private final static String SQL_ADD_COMMENT_TO_NEWS = "UPDATE COMMENTS SET COM_ID_NEWS = (?) WHERE COM_ID = (?)";
     private final static String SQL_ATTACH_TAG_TO_NEWS = "INSERT INTO NEWS_HAVE_TAGS(N_ID,TG_ID)VALUES(?,?)";
     private final static String SQL_GET_ALL_THEMES = "SELECT DISTINCT N_THEME FROM NEWS";
+    private final static String SQL_GET_ALL_NEWS_BY_THEME_PAGINATION = "SELECT N_ID,N_MAIN_TITLE,N_SHORT_TITLE,N_NEWS_TEXT,N_DATE,N_PHOTO,N_THEME from ( select rownum rnum, a.* from NEWS a where rownum <= ? AND N_THEME = ? ) where rnum >= ?";
 
     public List<News> viewAllNews() throws DaoException {
         logger.info("NewsDaoImpl.viewAllNews()");
@@ -126,6 +127,48 @@ public class NewsDaoImpl implements NewsDao {
              PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_NEWS_BY_THEME)) {
 
             ps.setString(1, theme.toString());
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                newsList.add(newsFactoryMethod(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getString(6),
+                        Theme.valueOf(rs.getString(7).toUpperCase())));
+
+            }
+
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                throw new DaoException(e);
+            }
+        }
+
+        return newsList;
+    }
+
+    @Override
+    public List<News> viewAllNews(Theme theme, int start, int end) {
+        logger.info("NewsDaoImpl.viewAllNews(" + theme.toString() + ")");
+
+        List<News> newsList = new ArrayList<>();
+        ResultSet rs = null;
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SQL_GET_ALL_NEWS_BY_THEME_PAGINATION)) {
+
+            ps.setInt(1, end);
+            ps.setString(2, theme.toString());
+            ps.setInt(3, start);
 
             rs = ps.executeQuery();
 

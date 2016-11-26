@@ -15,34 +15,37 @@ public class Author {
     @Size(min = 2, max = 20)
     private String surname;
 
+    public Author() {
+
+    }
 
     public Author(String name, String surname) {
         this.surname = surname;
         this.name = name;
     }
 
-    public void setName(String name) {
-        name = name;
-    }
-
-    public void setSurname(String surname) {
-        surname = surname;
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSurname() {
         return surname;
     }
 
-    public String getName() {
-        return name;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     @Override

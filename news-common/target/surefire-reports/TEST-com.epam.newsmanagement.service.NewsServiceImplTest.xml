@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="14" failures="0" name="com.epam.newsmanagement.service.NewsServiceImplTest" time="0.028" errors="0" skipped="0">
+<testsuite tests="11" failures="0" name="com.epam.newsmanagement.service.NewsServiceImplTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_77\jre\bin"/>
@@ -62,18 +62,15 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceViewASingleNewsByTags" time="0.009"/>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceViewAllPopularNews" time="0"/>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceViewAllNewsByTheme" time="0"/>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceTotalCountByTheme" time="0.005"/>
+  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceViewASingleNewsByTags" time="0"/>
+  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceTotalCountByTheme" time="0"/>
   <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceAddComment" time="0"/>
   <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceViewASingleNewsByAuthors" time="0"/>
   <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceEditNews" time="0"/>
   <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceTotalCount" time="0"/>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceAddNews" time="0.006"/>
+  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceAddNews" time="0"/>
   <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceAttachTagToNews" time="0"/>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceViewASingleNewsById" time="0.001"/>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceDeleteNewsQuery" time="0.006"/>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceViewAllNews" time="0"/>
-  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceDeleteNews" time="0.001"/>
+  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceViewASingleNewsById" time="0"/>
+  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceDeleteNewsQuery" time="0"/>
+  <testcase classname="com.epam.newsmanagement.service.NewsServiceImplTest" name="testNewsServiceDeleteNews" time="0"/>
 </testsuite>
