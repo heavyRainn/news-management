@@ -25,4 +25,10 @@
         <impl>com.epam.newsmanagement.command.impl.ConcreteNewsCommand</impl>
     </command>
 
+    <command>
+        <value>ADD_COMMENT</value>
+        <impl>com.epam.newsmanagement.command.impl.AddCommentCommand</impl>
+    </command>
+
+
 </commands>

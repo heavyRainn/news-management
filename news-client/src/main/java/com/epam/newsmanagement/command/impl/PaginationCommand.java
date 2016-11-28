@@ -25,7 +25,7 @@ public class PaginationCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        int pageNumber = Integer.valueOf(request.getParameter(PAGE_NUMBER));
+        int pageNumber = Integer.valueOf(request.getParameter(PAGE_NUMBER)) - 1;
 
         logger.info("PAGE_NUMBER : " + pageNumber);
 

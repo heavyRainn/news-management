@@ -58,4 +58,13 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/addTags.jsp"/>
     </definition>
 
+    <!-- Error Page -->
+    <definition name="error" extends="base-definition">
+        <put-attribute name="title" value="Error page"/>
+        <put-attribute name="body" value="/WEB-INF/views/pages/error.jsp"/>
+        <put-attribute name="header" value=""/>
+        <put-attribute name="menu" value=""/>
+        <put-attribute name="footer" value=""/>
+    </definition>
+
 </tiles-definitions>

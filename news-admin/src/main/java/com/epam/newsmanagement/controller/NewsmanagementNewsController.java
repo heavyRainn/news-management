@@ -3,6 +3,7 @@ package com.epam.newsmanagement.controller;
 import com.epam.newsmanagement.entity.Author;
 import com.epam.newsmanagement.entity.News;
 import com.epam.newsmanagement.entity.Theme;
+import com.epam.newsmanagement.exception.NewsNotFoundException;
 import com.epam.newsmanagement.service.CrudService;
 import com.epam.newsmanagement.service.NewsService;
 import com.epam.newsmanagement.util.search.NewsSearchCriteria;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -68,7 +68,8 @@ public class NewsmanagementNewsController {
     @RequestMapping("/filterNews")
     public String filterNews(Model model,
                              HttpSession session,
-                             @RequestParam("theme") Theme theme) {
+                             @RequestParam("theme") Theme theme,
+                             @RequestParam("author") String author) {
         logger.info("NewsmanagementNewsController.filterNews(" + theme + ")");
 
         List<News> news = newsService.viewAllNews(theme, 0, ITEMS_ON_PAGE);
@@ -79,6 +80,9 @@ public class NewsmanagementNewsController {
         model.addAttribute("allAuthors", authorService.read());
 
         session.setAttribute("theme", theme);
+        session.setAttribute("author", author);
+
+        logger.info("AUTHOR : " + author);
 
         return "filterHome";
     }
@@ -89,10 +93,14 @@ public class NewsmanagementNewsController {
                                        @PathVariable int pageNumber) {
         logger.info("NewsmanagementNewsController.filterNewsPagination(" + pageNumber-- + ")");
 
+        pageNumber--;
+
         Theme theme = (Theme) session.getAttribute("theme");
         List<News> news = newsService.viewAllNews(theme, ITEMS_ON_PAGE * pageNumber + 1, ITEMS_ON_PAGE * pageNumber + ITEMS_ON_PAGE);
 
-        pageNumber--;
+        if (news.isEmpty()) {
+            throw new NewsNotFoundException(news.toString());
+        }
 
         model.addAttribute("allNews", news);
         model.addAttribute("totalCount", newsService.totalCount(theme));
@@ -112,6 +120,10 @@ public class NewsmanagementNewsController {
         newsSearchCriteria.setId(idNews);
 
         News news = newsService.viewASingleNews(newsSearchCriteria).get(0);
+
+        if (news.equals(null)) {
+            throw new NewsNotFoundException(news.toString());
+        }
 
         model.addAttribute("concreteNews", news);
 

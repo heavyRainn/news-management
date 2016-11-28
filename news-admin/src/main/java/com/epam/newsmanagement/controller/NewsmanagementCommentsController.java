@@ -49,10 +49,10 @@ public class NewsmanagementCommentsController {
 
         comment.setDate(date);
 
-        if(commentService.create(comment)){
+        if (commentService.create(comment)) {
             return comment;
-        }else {
-           throw new CreationCommentException(comment.toString());
+        } else {
+            throw new CreationCommentException(comment.toString());
         }
     }
 }

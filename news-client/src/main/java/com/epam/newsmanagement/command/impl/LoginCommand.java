@@ -42,8 +42,8 @@ public class LoginCommand implements Command {
         User user = userService.findByLogin(request.getParameter(LOGIN));
 
         if ((user != null) && (Coder.getHashedPassword(request.getParameter(PASSWORD)).equals(user.getPassword()))) {
-            request.setAttribute(USER, user);
-            request.setAttribute(ROLE, userService.findRoleById(user.getId()));
+            request.getSession().setAttribute(USER, user);
+            request.getSession().setAttribute(ROLE, userService.findRoleById(user.getId()));
 
             request.setAttribute(ALL_THEMES, newsService.viewAllThemes());
             request.setAttribute(ALL_AUTHORS, authorService.read());

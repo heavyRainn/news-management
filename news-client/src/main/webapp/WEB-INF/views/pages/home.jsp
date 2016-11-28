@@ -85,7 +85,6 @@
     </ul>
     <form action="news-client" id="pagination-form" method="post">
         <div id="pager"></div>
-        <input type="hidden" name="command" value="pagination"/>
     </form>
 </div>
 </body>
