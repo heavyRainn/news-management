@@ -33,7 +33,7 @@ public class LoginCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
-        logger.info("FORM LOGIN PARAMS : " + request.getParameter(LOGIN) + " , " + Coder.getHashedPassword(request.getParameter(PASSWORD)));
+        logger.info("LoginCommand.execute( " + request.getParameter(LOGIN) + " , " + Coder.getHashedPassword(request.getParameter(PASSWORD)) + ")");
 
         UserService userService = ctx.getBean(UserService.class);
         NewsService newsService = ctx.getBean(NewsService.class);

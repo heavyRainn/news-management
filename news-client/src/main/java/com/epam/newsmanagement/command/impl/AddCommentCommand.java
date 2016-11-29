@@ -24,9 +24,12 @@ public class AddCommentCommand implements Command {
     private static final String COMMENT_TEXT = "commentText";
     private static final String USER = "user";
     private static final String NEWS_ID = "newsId";
+    private static final String CONCRETE_NEWS = "concreteNews";
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
+        logger.info("AddCommentCommand.execute()");
+
         String text = request.getParameter(COMMENT_TEXT);
 
         CrudService<Comment> commentService = ctx.getBean(CommentServiceImpl.class);
@@ -48,7 +51,7 @@ public class AddCommentCommand implements Command {
         comment.setNewsId(Integer.valueOf(request.getParameter(NEWS_ID)));
         comment.setDate(date);
 
-        request.setAttribute("concreteNews", news);
+        request.setAttribute(CONCRETE_NEWS, news);
 
         commentService.create(comment);
 

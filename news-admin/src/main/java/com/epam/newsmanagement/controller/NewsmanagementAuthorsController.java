@@ -1,7 +1,9 @@
 package com.epam.newsmanagement.controller;
 
 import com.epam.newsmanagement.entity.Author;
-import com.epam.newsmanagement.exception.CrudException;
+import com.epam.newsmanagement.exception.CrudCreateException;
+import com.epam.newsmanagement.exception.CrudDeleteException;
+import com.epam.newsmanagement.exception.CrudUpdateException;
 import com.epam.newsmanagement.service.CrudService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,12 @@ public class NewsmanagementAuthorsController {
 
     private static final Logger logger = Logger.getLogger(NewsmanagementAuthorsController.class);
 
-    private static final int ITEMS_ON_CRUD_PAGE = 5;
+    private static final String ITEMS_ON_PAGE = "itemsOnPage";
+    private static final String TOTAL_COUNT = "totalCount";
+    private static final String ALL_AUTHORS = "allAuthors";
+    private static final String SUCCESS = "success";
+
+    private static final int ITEMS_ON_PAGINATION = 5;
 
     @Autowired
     private CrudService<Author> authorService;
@@ -24,9 +31,9 @@ public class NewsmanagementAuthorsController {
     public String addAuthorsPage(Model model) {
         logger.info("NewsmanagementAuthorsController.addAuthorsPage()");
 
-        model.addAttribute("itemsOnPage", ITEMS_ON_CRUD_PAGE);
-        model.addAttribute("totalCount", authorService.totalCount());
-        model.addAttribute("allAuthors", authorService.read(0, ITEMS_ON_CRUD_PAGE));
+        model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
+        model.addAttribute(TOTAL_COUNT, authorService.totalCount());
+        model.addAttribute(ALL_AUTHORS, authorService.read(0, ITEMS_ON_PAGINATION));
 
         return "addAuthors";
     }
@@ -36,9 +43,9 @@ public class NewsmanagementAuthorsController {
                                        Model model) {
         logger.info("NewsmanagementAuthorsController.addAuthorsPagination(" + pageNumber-- + ")");
 
-        model.addAttribute("itemsOnPage", ITEMS_ON_CRUD_PAGE);
-        model.addAttribute("totalCount", authorService.totalCount());
-        model.addAttribute("allAuthors", authorService.read(ITEMS_ON_CRUD_PAGE * pageNumber + 1, ITEMS_ON_CRUD_PAGE * pageNumber + ITEMS_ON_CRUD_PAGE));
+        model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
+        model.addAttribute(TOTAL_COUNT, authorService.totalCount());
+        model.addAttribute(ALL_AUTHORS, authorService.read(ITEMS_ON_PAGINATION * pageNumber + 1, ITEMS_ON_PAGINATION * pageNumber + ITEMS_ON_PAGINATION));
 
         return "addAuthors";
     }
@@ -51,7 +58,7 @@ public class NewsmanagementAuthorsController {
         if (authorService.create(new Author(name, surname))) {
             return "redirect:/addAuthors";
         } else {
-            throw new CrudException(name + surname);
+            throw new CrudCreateException(name + surname);
         }
     }
 
@@ -61,9 +68,9 @@ public class NewsmanagementAuthorsController {
         logger.info("NewsmanagementAuthorsController.update(" + author.getId() + " , " + author.getName() + " , " + author.getSurname() + ")");
 
         if (authorService.update(author)) {
-            return "success";
+            return SUCCESS;
         } else {
-            return "error";
+            throw new CrudUpdateException(author.toString());
         }
     }
 
@@ -73,9 +80,9 @@ public class NewsmanagementAuthorsController {
         logger.info("NewsmanagementAuthorsController.delete(" + id + ")");
 
         if (authorService.delete(id)) {
-            return "success";
+            return SUCCESS;
         } else {
-            return "error";
+            throw new CrudDeleteException("Author id : " + id);
         }
     }
 

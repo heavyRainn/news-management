@@ -75,7 +75,5 @@ public class Newspaper {
         logger.info("Hashed Password : " + Coder.getHashedPassword(PASSWORD));
 
         logger.info("News query : " + newsService.viewAllNews(6, 9));
-
-        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
     }
 }

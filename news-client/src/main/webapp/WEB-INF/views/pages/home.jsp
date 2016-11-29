@@ -40,21 +40,24 @@
 </head>
 <body>
 <div id="filter-form">
-    <p>
-        <select>
-            <c:forEach items="${allThemes}" var="allThemes">
-                <option value="${allThemes}">${allThemes}</option>
-            </c:forEach>
-        </select>
-        <select>
-            <c:forEach items="${allAuthors}" var="allAuthors">
-                <option value="${allAuthors}">${allAuthors.surname}</option>
-            </c:forEach>
-        </select>
-        <button type="submit" class="btn1">Filter</button>
-        <button onclick="myFunction()">Reset</button>
-    </p>
+    <form action="news-client" method="post">
+        <p>
+            <select name="theme">
+                <c:forEach items="${allThemes}" var="allThemes">
+                    <option value="${allThemes}">${allThemes}</option>
+                </c:forEach>
+            </select>
+            <select name="author">
+                <c:forEach items="${allAuthors}" var="allAuthors">
+                    <option value="${allAuthors}">${allAuthors.surname}</option>
+                </c:forEach>
+            </select>
+            <input type="hidden" name="command" value="filter-news">
+            <button type="submit" class="btn1">Filter</button>
+        </p>
+    </form>
 </div>
+<button id="resetButton" onclick="reset()">Reset</button>
 <div id="news-container">
     <ul id="pagination">
         <c:forEach items="${allNews}" var="allNews">

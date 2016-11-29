@@ -30,5 +30,15 @@
         <impl>com.epam.newsmanagement.command.impl.AddCommentCommand</impl>
     </command>
 
+    <command>
+        <value>FILTER_NEWS</value>
+        <impl>com.epam.newsmanagement.command.impl.FilterNewsCommand</impl>
+    </command>
+
+    <command>
+        <value>FILTER_PAGINATION</value>
+        <impl>com.epam.newsmanagement.command.impl.FilterPaginationCommand</impl>
+    </command>
+
 
 </commands>

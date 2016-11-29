@@ -1,17 +1,9 @@
 package com.epam.newsmanagement.exception;
 
-public class CommandException extends Exception{
+public class CommandException extends NewsmanagementClientException {
 
-    public CommandException(String message){
+    public CommandException(String message) {
         super(message);
-    }
-
-    public CommandException(Exception e){
-        super(e);
-    }
-
-    public CommandException(String message, Exception e){
-        super(message, e);
     }
 
 }

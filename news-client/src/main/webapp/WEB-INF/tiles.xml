@@ -32,4 +32,10 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp"/>
     </definition>
 
+    <!-- Home Page -->
+    <definition name="filterHome" extends="base-definition">
+        <put-attribute name="title" value="Home"/>
+        <put-attribute name="body" value="/WEB-INF/views/pages/filterHome.jsp"/>
+    </definition>
+
 </tiles-definitions>

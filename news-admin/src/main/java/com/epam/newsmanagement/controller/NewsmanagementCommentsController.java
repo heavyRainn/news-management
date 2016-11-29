@@ -1,7 +1,7 @@
 package com.epam.newsmanagement.controller;
 
 import com.epam.newsmanagement.entity.Comment;
-import com.epam.newsmanagement.exception.CreationCommentException;
+import com.epam.newsmanagement.exception.CrudCreateException;
 import com.epam.newsmanagement.service.CrudService;
 import com.epam.newsmanagement.service.UserService;
 import org.apache.log4j.Logger;
@@ -52,7 +52,7 @@ public class NewsmanagementCommentsController {
         if (commentService.create(comment)) {
             return comment;
         } else {
-            throw new CreationCommentException(comment.toString());
+            throw new CrudCreateException(comment.toString());
         }
     }
 }

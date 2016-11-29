@@ -3,6 +3,7 @@ package com.epam.newsmanagement.controller;
 import com.epam.newsmanagement.entity.Author;
 import com.epam.newsmanagement.entity.News;
 import com.epam.newsmanagement.entity.Theme;
+import com.epam.newsmanagement.exception.NewsCreateException;
 import com.epam.newsmanagement.exception.NewsNotFoundException;
 import com.epam.newsmanagement.service.CrudService;
 import com.epam.newsmanagement.service.NewsService;
@@ -12,10 +13,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
@@ -26,7 +24,17 @@ public class NewsmanagementNewsController {
 
     private static final Logger logger = Logger.getLogger(NewsmanagementNewsController.class);
 
-    private static final int ITEMS_ON_PAGE = 3;
+
+    private static final String ITEMS_ON_PAGE = "itemsOnPage";
+    private static final String TOTAL_COUNT = "totalCount";
+    private static final String ALL_AUTHORS = "allAuthors";
+    private static final String ALL_NEWS = "allNews";
+    private static final String ALL_THEMES = "allThemes";
+    private static final String CONCRETE_NEWS = "concreteNews";
+    private static final String THEME = "theme";
+    private static final String AUTHOR = "author";
+
+    private static final int ITEMS_ON_PAGINATION = 3;
 
     @Autowired
     private NewsService newsService;
@@ -34,17 +42,17 @@ public class NewsmanagementNewsController {
     @Autowired
     private CrudService<Author> authorService;
 
-    @RequestMapping()
+    @RequestMapping
     public String initHomePage(Model model) {
         logger.info("NewsmanagementNewsController.intHomePage()");
 
-        List<News> news = newsService.viewAllNews(0, ITEMS_ON_PAGE);
+        List<News> news = newsService.viewAllNews(0, ITEMS_ON_PAGINATION);
 
-        model.addAttribute("allNews", news);
-        model.addAttribute("totalCount", newsService.totalCount());
-        model.addAttribute("itemsOnPage", ITEMS_ON_PAGE);
-        model.addAttribute("allThemes", newsService.viewAllThemes());
-        model.addAttribute("allAuthors", authorService.read());
+        model.addAttribute(ALL_NEWS, news);
+        model.addAttribute(TOTAL_COUNT, newsService.totalCount());
+        model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
+        model.addAttribute(ALL_THEMES, newsService.viewAllThemes());
+        model.addAttribute(ALL_AUTHORS, authorService.read());
 
         return "home";
     }
@@ -54,13 +62,13 @@ public class NewsmanagementNewsController {
                                  Model model) {
         logger.info("NewsmanagementNewsController.paginationNews(" + pageNumber-- + ")");
 
-        List<News> news = newsService.viewAllNews(ITEMS_ON_PAGE * pageNumber + 1, ITEMS_ON_PAGE * pageNumber + ITEMS_ON_PAGE);
+        List<News> news = newsService.viewAllNews(ITEMS_ON_PAGINATION * pageNumber + 1, ITEMS_ON_PAGINATION * pageNumber + ITEMS_ON_PAGINATION);
 
-        model.addAttribute("allNews", news);
-        model.addAttribute("totalCount", newsService.totalCount());
-        model.addAttribute("itemsOnPage", ITEMS_ON_PAGE);
-        model.addAttribute("allThemes", newsService.viewAllThemes());
-        model.addAttribute("allAuthors", authorService.read());
+        model.addAttribute(ALL_NEWS, news);
+        model.addAttribute(TOTAL_COUNT, newsService.totalCount());
+        model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
+        model.addAttribute(ALL_THEMES, newsService.viewAllThemes());
+        model.addAttribute(ALL_AUTHORS, authorService.read());
 
         return "home";
     }
@@ -72,15 +80,15 @@ public class NewsmanagementNewsController {
                              @RequestParam("author") String author) {
         logger.info("NewsmanagementNewsController.filterNews(" + theme + ")");
 
-        List<News> news = newsService.viewAllNews(theme, 0, ITEMS_ON_PAGE);
-        model.addAttribute("allNews", news);
-        model.addAttribute("totalCount", newsService.totalCount(theme));
-        model.addAttribute("itemsOnPage", ITEMS_ON_PAGE);
-        model.addAttribute("allThemes", newsService.viewAllThemes());
-        model.addAttribute("allAuthors", authorService.read());
+        List<News> news = newsService.viewAllNews(theme, 0, ITEMS_ON_PAGINATION);
+        model.addAttribute(ALL_NEWS, news);
+        model.addAttribute(TOTAL_COUNT, newsService.totalCount(theme));
+        model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
+        model.addAttribute(ALL_THEMES, newsService.viewAllThemes());
+        model.addAttribute(ALL_AUTHORS, authorService.read());
 
-        session.setAttribute("theme", theme);
-        session.setAttribute("author", author);
+        session.setAttribute(THEME, theme);
+        session.setAttribute(AUTHOR, author);
 
         logger.info("AUTHOR : " + author);
 
@@ -95,18 +103,18 @@ public class NewsmanagementNewsController {
 
         pageNumber--;
 
-        Theme theme = (Theme) session.getAttribute("theme");
-        List<News> news = newsService.viewAllNews(theme, ITEMS_ON_PAGE * pageNumber + 1, ITEMS_ON_PAGE * pageNumber + ITEMS_ON_PAGE);
+        Theme theme = (Theme) session.getAttribute(THEME);
+        List<News> news = newsService.viewAllNews(theme, ITEMS_ON_PAGINATION * pageNumber + 1, ITEMS_ON_PAGINATION * pageNumber + ITEMS_ON_PAGINATION);
 
         if (news.isEmpty()) {
             throw new NewsNotFoundException(news.toString());
         }
 
-        model.addAttribute("allNews", news);
-        model.addAttribute("totalCount", newsService.totalCount(theme));
-        model.addAttribute("itemsOnPage", ITEMS_ON_PAGE);
-        model.addAttribute("allThemes", newsService.viewAllThemes());
-        model.addAttribute("allAuthors", authorService.read());
+        model.addAttribute(ALL_NEWS, news);
+        model.addAttribute(TOTAL_COUNT, newsService.totalCount(theme));
+        model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
+        model.addAttribute(ALL_THEMES, newsService.viewAllThemes());
+        model.addAttribute(ALL_AUTHORS, authorService.read());
 
         return "filterHome";
     }
@@ -125,7 +133,7 @@ public class NewsmanagementNewsController {
             throw new NewsNotFoundException(news.toString());
         }
 
-        model.addAttribute("concreteNews", news);
+        model.addAttribute(CONCRETE_NEWS, news);
 
         return "concreteNews";
     }
@@ -134,8 +142,8 @@ public class NewsmanagementNewsController {
     public String addNewsPage(Model model) {
         logger.info("NewsmanagementNewsController.addNewsPage()");
 
-        model.addAttribute("allThemes", newsService.viewAllThemes());
-        model.addAttribute("allAuthors", authorService.read());
+        model.addAttribute(ALL_THEMES, newsService.viewAllThemes());
+        model.addAttribute(ALL_AUTHORS, authorService.read());
 
         return "addNews";
     }
@@ -148,6 +156,19 @@ public class NewsmanagementNewsController {
                           @RequestParam("theme") Theme theme,
                           @RequestParam("author") String author) {
         logger.info("NewsmanagementNewsController.addNewsPage() : " + title + " , " + date + " , " + brief + " , " + content + " , " + theme + " , " + author);
+
+        News news = new News();
+
+        news.setMainTitle(title);
+        news.setShortTitle(brief);
+        news.setDate(date);
+        news.setTheme(theme);
+        news.setNewsText(content);
+        //news.setAuthors();
+
+        if (!newsService.addNews(news)) {
+            throw new NewsCreateException(news.toString());
+        }
 
         return "redirect:/";
     }

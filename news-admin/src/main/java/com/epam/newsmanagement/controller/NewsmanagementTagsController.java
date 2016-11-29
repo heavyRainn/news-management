@@ -1,7 +1,9 @@
 package com.epam.newsmanagement.controller;
 
 import com.epam.newsmanagement.entity.Tag;
-import com.epam.newsmanagement.exception.CrudException;
+import com.epam.newsmanagement.exception.CrudCreateException;
+import com.epam.newsmanagement.exception.CrudDeleteException;
+import com.epam.newsmanagement.exception.CrudUpdateException;
 import com.epam.newsmanagement.service.CrudService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,11 @@ public class NewsmanagementTagsController {
 
     private static final Logger logger = Logger.getLogger(NewsmanagementTagsController.class);
 
-    private static final int ITEMS_ON_CRUD_PAGE = 5;
+    private static final String ITEMS_ON_PAGE = "itemsOnPage";
+    private static final String TOTAL_COUNT = "totalCount";
+    private static final String ALL_TAGS = "allTags";
+
+    private static final int ITEMS_ON_PAGINATION = 5;
 
     @Autowired
     private CrudService<Tag> tagService;
@@ -24,9 +30,9 @@ public class NewsmanagementTagsController {
     public String addTagsPage(Model model) {
         logger.info("NewsmanagementTagsController.addAuthorsPage()");
 
-        model.addAttribute("itemsOnPage", ITEMS_ON_CRUD_PAGE);
-        model.addAttribute("totalCount", tagService.totalCount());
-        model.addAttribute("allTags", tagService.read(0, ITEMS_ON_CRUD_PAGE));
+        model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
+        model.addAttribute(TOTAL_COUNT, tagService.totalCount());
+        model.addAttribute(ALL_TAGS, tagService.read(0, ITEMS_ON_PAGINATION));
 
         return "addTags";
     }
@@ -36,9 +42,9 @@ public class NewsmanagementTagsController {
                                     Model model) {
         logger.info("NewsmanagementTagsController.addTagsPagination(" + pageNumber-- + ")");
 
-        model.addAttribute("itemsOnPage", ITEMS_ON_CRUD_PAGE);
-        model.addAttribute("totalCount", tagService.totalCount());
-        model.addAttribute("allTags", tagService.read(ITEMS_ON_CRUD_PAGE * pageNumber + 1, ITEMS_ON_CRUD_PAGE * pageNumber + ITEMS_ON_CRUD_PAGE));
+        model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
+        model.addAttribute(TOTAL_COUNT, tagService.totalCount());
+        model.addAttribute(ALL_TAGS, tagService.read(ITEMS_ON_PAGINATION * pageNumber + 1, ITEMS_ON_PAGINATION * pageNumber + ITEMS_ON_PAGINATION));
 
         return "addTags";
     }
@@ -50,7 +56,7 @@ public class NewsmanagementTagsController {
         if (tagService.create(new Tag(value))) {
             return "redirect:/";
         } else {
-            throw new CrudException(value);
+            throw new CrudCreateException(value);
         }
     }
 
@@ -62,7 +68,7 @@ public class NewsmanagementTagsController {
         if (tagService.update(tag)) {
             return "success";
         } else {
-            return "error";
+            throw new CrudUpdateException(tag.toString());
         }
     }
 
@@ -74,7 +80,7 @@ public class NewsmanagementTagsController {
         if (tagService.delete(id)) {
             return "success";
         } else {
-            return "error";
+            throw new CrudDeleteException("Tag id : " + id);
         }
     }
 

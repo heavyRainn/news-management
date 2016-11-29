@@ -75,7 +75,6 @@ public class NewspaperWebConfig extends WebMvcConfigurerAdapter {
 
         Properties mappings = new Properties();
         mappings.setProperty("DatabaseException", "databaseError");
-        mappings.setProperty("InvalidCreditCardException", "creditCardError");
 
         r.setExceptionMappings(mappings);
         r.setDefaultErrorView("error");

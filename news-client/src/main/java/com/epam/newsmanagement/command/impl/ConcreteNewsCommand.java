@@ -17,9 +17,12 @@ public class ConcreteNewsCommand implements Command {
     private static final Logger logger = Logger.getLogger(ConcreteNewsCommand.class);
 
     private static final String NEWS_ID = "newsId";
+    private static final String CONCRETE_NEWS = "concreteNews";
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
+        logger.info("ConcreteNewsCommand.execute()");
+
         int newsId = Integer.valueOf(request.getParameter(NEWS_ID));
 
         NewsService newsService = ctx.getBean(NewsServiceImpl.class);
@@ -29,11 +32,7 @@ public class ConcreteNewsCommand implements Command {
 
         News news = newsService.viewASingleNews(newsSearchCriteria).get(0);
 
-        request.setAttribute("concreteNews", news);
-
-        logger.info("NEWS ID : " + newsId);
-
-        logger.info("NEWS : " + news);
+        request.setAttribute(CONCRETE_NEWS, news);
 
         return PageName.CONCRETE_NEWS_PAGE;
     }
