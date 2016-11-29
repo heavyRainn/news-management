@@ -1,10 +1,10 @@
 package com.epam.newsmanagement.controller.helper;
 
-import java.util.Map;
-
 import com.epam.newsmanagement.command.Command;
 import com.epam.newsmanagement.exception.DomParserException;
 import org.apache.log4j.Logger;
+
+import java.util.Map;
 
 /**
  * Helps to initialize map with commands
@@ -27,6 +27,12 @@ public class XmlHelper {
         }
         return instance;
     }
+
+    /**
+     * Invokes method parse form DomParser class
+     *
+     * @return map of commands
+     */
 
     public Map<String, Command> parse() {
         Map<String, Command> map = null;

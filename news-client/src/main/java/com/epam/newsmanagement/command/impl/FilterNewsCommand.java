@@ -22,6 +22,7 @@ public class FilterNewsCommand implements Command {
     private static final String TOTAL_COUNT = "totalCount";
     private static final String ITEMS_ON_PAGE_STRING = "itemsOnPage";
     private static final String THEME = "theme";
+
     private static final int ITEMS_ON_PAGE = 3;
 
     @Override

@@ -6,7 +6,7 @@ public final class PageName {
     public static final String LOGIN_PAGE = "logintiles.jsp";
     public static final String CONCRETE_NEWS_PAGE = "concreteNewsTiles.jsp";
     public static final String FILTER_HOME = "filterNewsTiles.jsp";
-    
+
     private PageName() {
     }
 

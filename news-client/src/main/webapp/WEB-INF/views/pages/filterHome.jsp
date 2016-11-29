@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>Home page</title>
+    <title>Filter home page</title>
     <style>
         <%@include file="/resources/css/home.css" %>
     </style>

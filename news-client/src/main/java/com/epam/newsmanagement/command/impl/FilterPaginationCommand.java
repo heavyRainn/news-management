@@ -23,6 +23,7 @@ public class FilterPaginationCommand implements Command {
     private static final String ITEMS_ON_PAGE_STRING = "itemsOnPage";
     private static final String PAGE_NUMBER = "page";
     private static final String THEME = "theme";
+
     private static final int ITEMS_ON_PAGE = 3;
 
     @Override

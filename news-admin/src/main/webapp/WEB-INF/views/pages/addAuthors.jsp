@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Add authors</title>
+    <title>Add authors page</title>
     <style>
         <%@include file="/resources/css/home.css" %>
     </style>
@@ -56,10 +56,8 @@
                         $(".msg").remove();
                     }, 5000);
                     cancelEdit(id);
-                } else if (result == "error") {
+                } else {
                     alert("Error on server");
-                } else if (result == "exists") {
-                    alert("Author this id not exists");
                 }
             });
         }
@@ -73,10 +71,8 @@
                         $(".msg").remove();
                     }, 5000);
                     cancelEdit(id);
-                } else if (result == "error") {
+                } else {
                     alert("Error on server");
-                } else if (result == "exists") {
-                    alert("Author this id not exists");
                 }
             });
         }

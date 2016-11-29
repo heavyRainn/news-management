@@ -1,13 +1,9 @@
 package com.epam.newsmanagement.controller;
 
 import com.epam.newsmanagement.command.Command;
-import com.epam.newsmanagement.config.NewspaperClientRootConfig;
-import com.epam.newsmanagement.config.NewspaperRootConfig;
 import com.epam.newsmanagement.controller.helper.CommandHelper;
 import com.epam.newsmanagement.exception.CommandException;
 import org.apache.log4j.Logger;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+/**
+ * Processes all incoming requests by redirecting them to the corresponding
+ * command.
+ */
 
 @WebServlet("/news-client")
 public class Controller extends HttpServlet {
@@ -50,8 +51,6 @@ public class Controller extends HttpServlet {
 
         try {
             command = commandHelper.getCommand(request.getParameter(COMMAND_NAME));
-            logger.info("In Controller : " + request.getParameter(COMMAND_NAME));
-            logger.info("In Controller : " + command);
             page = command.execute(request);
             RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 

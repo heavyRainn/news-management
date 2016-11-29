@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Add tags</title>
+    <title>Add tags page</title>
     <style>
         <%@include file="/resources/css/home.css" %>
     </style>
@@ -49,10 +49,8 @@
                         $(".msg").remove();
                     }, 5000);
                     cancelEdit(id);
-                } else if (result == "error") {
+                } else {
                     alert("Error on server");
-                } else if (result == "exists") {
-                    alert("Tag this id not exists");
                 }
             });
         }
@@ -66,10 +64,8 @@
                         $(".msg").remove();
                     }, 5000);
                     cancelEdit(id);
-                } else if (result == "error") {
+                } else {
                     alert("Error on server");
-                } else if (result == "exists") {
-                    alert("Tag this id not exists");
                 }
             });
         }

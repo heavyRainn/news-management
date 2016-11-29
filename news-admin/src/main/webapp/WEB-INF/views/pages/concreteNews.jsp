@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Concrete news</title>
+    <title>Concrete news page</title>
     <style>
         <%@include file="/resources/css/home.css" %>
     </style>

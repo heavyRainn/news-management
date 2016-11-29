@@ -1,11 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>ERROR</title>
+    <title>Error page</title>
 </head>
 <body>
-Exception : ${exception}
-URL : ${url}
-ERROR : ${error}
+<ul>
+    <li>Exception : ${exception}</li>
+    <p/>
+    <li>URL : ${url}</li>
+    <p/>
+    <li>ERROR : ${error}</li>
+</ul>
 </body>
 </html>

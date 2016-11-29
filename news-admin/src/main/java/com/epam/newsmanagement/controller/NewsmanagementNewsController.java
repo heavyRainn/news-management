@@ -24,7 +24,6 @@ public class NewsmanagementNewsController {
 
     private static final Logger logger = Logger.getLogger(NewsmanagementNewsController.class);
 
-
     private static final String ITEMS_ON_PAGE = "itemsOnPage";
     private static final String TOTAL_COUNT = "totalCount";
     private static final String ALL_AUTHORS = "allAuthors";

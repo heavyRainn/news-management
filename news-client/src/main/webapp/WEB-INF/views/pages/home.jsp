@@ -32,10 +32,6 @@
                 $('#pager').pagination('getCurrentPage');
             }));
         });
-
-        function myFunction() {
-            location.reload();
-        }
     </script>
 </head>
 <body>

@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Login page</title>
     <style>
         <%@include file="/resources/css/adminLogin.css" %>
     </style>

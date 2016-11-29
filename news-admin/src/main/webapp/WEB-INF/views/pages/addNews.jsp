@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Add news</title>
+    <title>Add news page</title>
     <style>
         <%@include file="/resources/css/home.css" %>
     </style>

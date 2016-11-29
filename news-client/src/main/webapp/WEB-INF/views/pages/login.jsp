@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Login page</title>
     <style>
         <%@include file="/resources/css/adminLogin.css" %>
     </style>
@@ -11,7 +11,7 @@
 
 <body>
 
-<form action="${pageContext.request.contextPath}/news-client" id="login-form" method="post">
+<form action="news-client" id="login-form" method="post">
     <p>
         <label for="login">Login :</label>
         <input type="text" id="login" name="login"/>
