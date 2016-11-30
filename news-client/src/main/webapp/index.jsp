@@ -9,6 +9,7 @@
 </head>
 <body>
 <c:set var="language" scope="session" value="en_EN"/>
-<c:redirect url="logintiles.jsp"/>
+<c:set var="url" scope="session" value="logintiles.jsp"/>
+<jsp:forward page="logintiles.jsp"/>
 </body>
 </html>

@@ -11,6 +11,9 @@
 <body>
 
 <h1>News portal </h1>
-
+<label class="localization">
+    <a href="${pageContext.request.contextPath}/news-client?command=change-locale&language=en_EN">EN</a>
+    <a href="${pageContext.request.contextPath}/news-client?command=change-locale&language=ru_RU">RU</a>
+</label>
 </body>
 </html>

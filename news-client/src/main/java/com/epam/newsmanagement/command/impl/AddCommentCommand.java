@@ -34,8 +34,6 @@ public class AddCommentCommand implements Command {
 
         CrudService<Comment> commentService = ctx.getBean(CommentServiceImpl.class);
 
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-
         NewsService newsService = ctx.getBean(NewsServiceImpl.class);
 
         NewsSearchCriteria newsSearchCriteria = new NewsSearchCriteria(NewsSearchType.BY_ID);
@@ -45,17 +43,27 @@ public class AddCommentCommand implements Command {
 
         User user = (User) request.getSession().getAttribute(USER);
 
-        Comment comment = new Comment();
-        comment.setText(text);
-        comment.setUserId(user.getId());
-        comment.setNewsId(Integer.valueOf(request.getParameter(NEWS_ID)));
-        comment.setDate(date);
+        Comment comment = getCompleteComment(Integer.valueOf(request.getParameter(NEWS_ID)), text, user.getId());
 
         request.setAttribute(CONCRETE_NEWS, news);
 
         commentService.create(comment);
 
         return PageName.CONCRETE_NEWS_PAGE;
+    }
+
+    private Comment getCompleteComment(int newsId, String text, int userId) {
+        Comment comment = new Comment();
+
+        comment.setText(text);
+        comment.setUserId(userId);
+        comment.setNewsId(newsId);
+
+        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+        comment.setDate(date);
+
+        return comment;
     }
 
 }

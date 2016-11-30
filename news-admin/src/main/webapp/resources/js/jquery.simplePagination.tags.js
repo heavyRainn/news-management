@@ -19,7 +19,7 @@
                 displayedPages: 5,
                 edges: 2,
                 currentPage: 0,
-                hrefTextPrefix: '/news-admin/addTags/page-',
+                hrefTextPrefix: '/news-admin/tags/page-',
                 hrefTextSuffix: '',
                 prevText: 'Prev',
                 nextText: 'Next',

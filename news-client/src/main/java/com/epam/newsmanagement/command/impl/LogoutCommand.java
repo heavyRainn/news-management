@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Configurable;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Configurable
 public class LogoutCommand implements Command {
 
     private static final Logger logger = Logger.getLogger(LogoutCommand.class);

@@ -12,8 +12,8 @@
     <ul id="menu-v">
         <li><a href="/news-admin"><s:message code="default.menu.text.nl"/></a></li>
         <li><a href="/news-admin/addNews"><s:message code="default.menu.text.an"/></a></li>
-        <li><a href="/news-admin/addAuthors"><s:message code="default.menu.text.aua"/></a></li>
-        <li><a href="/news-admin/addTags"><s:message code="default.menu.text.aut"/></a></li>
+        <li><a href="/news-admin/authors"><s:message code="default.menu.text.aua"/></a></li>
+        <li><a href="/news-admin/tags"><s:message code="default.menu.text.aut"/></a></li>
     </ul>
 </nav>
 </body>

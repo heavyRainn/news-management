@@ -47,15 +47,15 @@
     </definition>
 
     <!-- Add or update authors Page -->
-    <definition name="addAuthors" extends="base-definition">
+    <definition name="authors" extends="base-definition">
         <put-attribute name="title" value="Add authors"/>
-        <put-attribute name="body" value="/WEB-INF/views/pages/addAuthors.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/pages/authors.jsp"/>
     </definition>
 
     <!-- Add or update tags Page -->
-    <definition name="addTags" extends="base-definition">
+    <definition name="tags" extends="base-definition">
         <put-attribute name="title" value="Add tags"/>
-        <put-attribute name="body" value="/WEB-INF/views/pages/addTags.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/pages/tags.jsp"/>
     </definition>
 
     <!-- Error Page -->

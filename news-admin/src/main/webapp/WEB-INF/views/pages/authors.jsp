@@ -44,7 +44,7 @@
             var data = $("#" + id).val();
             var authorName = data.split(' ')[0].trim();
             var authorSurname = data.split(' ')[1].trim();
-            $.post("/news-admin/addAuthors/update", {
+            $.post("/news-admin/authors/update", {
                 id: parseInt(id),
                 name: authorName,
                 surname: authorSurname
@@ -63,7 +63,7 @@
         }
 
         function deleteAuthor(id) {
-            $.post("/news-admin/addAuthors/delete", {id: parseInt(id)}, function (result) {
+            $.post("/news-admin/authors/delete", {id: parseInt(id)}, function (result) {
                 console.log("Have response: " + result);
                 if (result == "success") {
                     $("#authors-form").prepend(successMsg('Author successfully deleted'));
@@ -110,7 +110,7 @@
     <div id="pager"></div>
     <p></p>
     <div>
-        <c:url value="/addAuthors" var="addAuthorUrl"/>
+        <c:url value="/authors" var="addAuthorUrl"/>
         <form name="new-author" action="${addAuthorUrl}" method="post">
             <p>
                 <label for="name"><s:message code="label.author.name"/> :</label>

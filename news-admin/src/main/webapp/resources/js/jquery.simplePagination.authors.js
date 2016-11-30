@@ -19,7 +19,7 @@
 				displayedPages: 5,
 				edges: 2,
 				currentPage: 0,
-				hrefTextPrefix: '/news-admin/addAuthors/page-',
+				hrefTextPrefix: '/news-admin/authors/page-',
 				hrefTextSuffix: '',
 				prevText: 'Prev',
 				nextText: 'Next',

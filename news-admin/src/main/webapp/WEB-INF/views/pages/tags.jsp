@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Add tags page</title>
+    <title>Add tags</title>
     <style>
         <%@include file="/resources/css/home.css" %>
     </style>
@@ -41,7 +41,7 @@
         }
 
         function updateTag(id) {
-            $.post("/news-admin/addTags/update", {id: parseInt(id), text: $("#" + id).val()}, function (result) {
+            $.post("/news-admin/tags/update", {id: parseInt(id), text: $("#" + id).val()}, function (result) {
                 console.log("Have response: " + result);
                 if (result == "success") {
                     $("#tags-form").prepend(successMsg('Tag successfully updated'));
@@ -49,14 +49,16 @@
                         $(".msg").remove();
                     }, 5000);
                     cancelEdit(id);
-                } else {
+                } else if (result == "error") {
                     alert("Error on server");
+                } else if (result == "exists") {
+                    alert("Tag this id not exists");
                 }
             });
         }
 
         function deleteTag(id) {
-            $.post("/news-admin/addTags/delete", {id: parseInt(id)}, function (result) {
+            $.post("/news-admin/tags/delete", {id: parseInt(id)}, function (result) {
                 console.log("Have response: " + result);
                 if (result == "success") {
                     $("#tags-form").prepend(successMsg('Tag successfully deleted'));
@@ -64,8 +66,10 @@
                         $(".msg").remove();
                     }, 5000);
                     cancelEdit(id);
-                } else {
+                } else if (result == "error") {
                     alert("Error on server");
+                } else if (result == "exists") {
+                    alert("Tag this id not exists");
                 }
             });
         }
@@ -104,7 +108,7 @@
     </c:forEach>
     <div id="pager"></div>
     <div>
-        <c:url value="/addTags" var="addTagsUrl"/>
+        <c:url value="/tags" var="addTagsUrl"/>
         <form action="${addTagsUrl}" method="post">
             <p>
                 <label for="value"><s:message code="label.tag.text"/> :</label>

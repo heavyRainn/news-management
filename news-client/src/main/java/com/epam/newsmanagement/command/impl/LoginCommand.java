@@ -11,12 +11,10 @@ import com.epam.newsmanagement.service.UserService;
 import com.epam.newsmanagement.service.impl.AuthorServiceImpl;
 import com.epam.newsmanagement.util.Coder;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Configurable;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Configurable
-public class LoginCommand implements Command {
+public class LoginCommand implements Command{
 
     private static final Logger logger = Logger.getLogger(LoginCommand.class);
 
