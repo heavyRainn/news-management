@@ -1,5 +1,4 @@
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\entity\User.java
-C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\NewsNotFoundException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\entity\News.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\dao\impl\CommentDaoImpl.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\service\CrudService.java
@@ -7,22 +6,16 @@ C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\entity\Theme.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\config\Newspaper.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\service\impl\NewsServiceImpl.java
-C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\CrudNotFoundException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\dao\connectionpool\DataSource.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\service\impl\CustomUserDetailService.java
-C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\CrudUpdateException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\ServiceException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\DataSourceException.java
-C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\CrudCreateException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\service\UserService.java
-C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\CrudException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\entity\Tag.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\DaoException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\dao\UserDao.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\dao\CrudDao.java
-C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\NewsCreateException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\dao\impl\UserDaoImpl.java
-C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\CrudDeleteException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\config\NewspaperRootConfig.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\service\impl\CommentServiceImpl.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\dao\impl\AuthorDaoImpl.java
@@ -37,5 +30,4 @@ C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\dao\NewsDao.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\entity\Author.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\util\search\NewsSearchCriteria.java
-C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\exception\NotFoundException.java
 C:\Users\Andrei_Fiodarau\IdeaProjects\news-management\news-common\src\main\java\com\epam\newsmanagement\util\search\NewsSearchType.java

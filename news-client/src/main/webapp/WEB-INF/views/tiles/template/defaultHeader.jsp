@@ -18,9 +18,5 @@
         <button type="submit" class="btn">Log out</button>
     </form>
 </label>
-<label class="localization">
-    <a href="${pageContext.request.contextPath}/news-client?command=change-locale&language=en_EN">EN</a>
-    <a href="${pageContext.request.contextPath}/news-client?command=change-locale&language=ru_RU">RU</a>
-</label>
 </body>
 </html>

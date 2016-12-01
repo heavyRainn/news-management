@@ -51,11 +51,10 @@ public class Author {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Author)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Author author = (Author) o;
 
-        if (id != author.id) return false;
         if (!name.equals(author.name)) return false;
         return surname.equals(author.surname);
 
@@ -63,18 +62,8 @@ public class Author {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + name.hashCode();
+        int result = name.hashCode();
         result = 31 * result + surname.hashCode();
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Author{" +
-                "id=" + id +
-                ", Name='" + name + '\'' +
-                ", Surname='" + surname + '\'' +
-                '}';
     }
 }

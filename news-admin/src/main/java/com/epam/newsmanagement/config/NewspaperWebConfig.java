@@ -69,8 +69,7 @@ public class NewspaperWebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public SimpleMappingExceptionResolver
-    createSimpleMappingExceptionResolver() {
+    public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
         SimpleMappingExceptionResolver r = new SimpleMappingExceptionResolver();
 
         Properties mappings = new Properties();

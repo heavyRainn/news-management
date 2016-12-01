@@ -40,6 +40,8 @@ public interface NewsDao {
 
     boolean attachTagToNews(int idNews, int idTag);
 
+    boolean attachAuthor(int newsId, int authorId);
+
     List<Theme> viewAllThemes();
 
     int totalCount();

@@ -41,6 +41,7 @@ public class NewsDaoImpl implements NewsDao {
     private final static String SQL_ATTACH_TAG_TO_NEWS = "INSERT INTO NEWS_HAVE_TAGS(N_ID,TG_ID)VALUES(?,?)";
     private final static String SQL_GET_ALL_THEMES = "SELECT DISTINCT N_THEME FROM NEWS";
     private final static String SQL_GET_ALL_NEWS_BY_THEME_PAGINATION = "SELECT N_ID,N_MAIN_TITLE,N_SHORT_TITLE,N_NEWS_TEXT,N_DATE,N_PHOTO,N_THEME from ( select rownum rnum, a.* from NEWS a where rownum <= ? AND N_THEME = ? ) where rnum >= ?";
+    private final static String SQL_ATTACH_AUTHOR_TO_NEWS = "INSERT INTO NEWS_HAVE_AUTHORS(N_ID,ATR_ID)VALUES(?,?)";
 
     public List<News> viewAllNews() throws DaoException {
         logger.info("NewsDaoImpl.viewAllNews()");
@@ -69,6 +70,26 @@ public class NewsDaoImpl implements NewsDao {
         }
 
         return newsList;
+    }
+
+    public boolean attachAuthor(int newsId, int authorId) {
+        logger.info("NewsDaoImpl.attachAuthor(" + newsId + "" + authorId + ")");
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement ps = connection.prepareStatement(SQL_ATTACH_AUTHOR_TO_NEWS)) {
+
+            ps.setInt(1, newsId);
+            ps.setInt(2, authorId);
+
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+
+        return false;
     }
 
     @Override

@@ -8,7 +8,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
@@ -28,7 +27,6 @@ public class NewsmanagementCommentsController {
         return auth.getName();
     }
 
-    @ResponseBody
     @PostMapping("/add")
     public Comment add(String text, int newsId) {
         Comment comment = getCompleteComment(newsId, text);

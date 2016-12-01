@@ -92,6 +92,11 @@ public class NewsServiceImpl implements NewsService {
         return newsDao.attachTagToNews(idNews, idTag);
     }
 
+    @Override
+    public boolean attachAuthor(int newsId, int authorId) {
+        return newsDao.attachAuthor(newsId, authorId);
+    }
+
     public List<Theme> viewAllThemes() {
         return newsDao.viewAllThemes();
     }

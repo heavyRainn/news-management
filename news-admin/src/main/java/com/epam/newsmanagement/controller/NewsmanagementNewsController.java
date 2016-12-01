@@ -132,7 +132,20 @@ public class NewsmanagementNewsController {
                           @RequestParam("brief") String brief,
                           @RequestParam("content") String content,
                           @RequestParam("theme") Theme theme,
-                          @RequestParam("author") String author) {
+                          @RequestParam("author") int authorId) {
+        newsService.addNews(buildNews(title, date, brief, content, theme));
+
+        NewsSearchCriteria newsSearchCriteria = new NewsSearchCriteria(NewsSearchType.BY_TITLE);
+        newsSearchCriteria.setTitle(title);
+
+        int newsId = newsService.viewASingleNews(newsSearchCriteria).get(0).getId();
+
+        newsService.attachAuthor(newsId, authorId);
+
+        return "redirect:/";
+    }
+
+    private News buildNews(String title, Date date, String brief, String content, Theme theme) {
         News news = new News();
 
         news.setMainTitle(title);
@@ -140,9 +153,8 @@ public class NewsmanagementNewsController {
         news.setDate(date);
         news.setTheme(theme);
         news.setNewsText(content);
-        //news.setAuthors();
 
-        return "redirect:/";
+        return news;
     }
 
 }
