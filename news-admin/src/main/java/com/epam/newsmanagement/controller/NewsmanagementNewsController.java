@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,7 +30,7 @@ public class NewsmanagementNewsController {
     private static final String ALL_THEMES = "allThemes";
     private static final String CONCRETE_NEWS = "concreteNews";
     private static final String THEME = "theme";
-    private static final String AUTHOR = "author";
+    private static final String AUTHOR = "authorId";
 
     private static final int ITEMS_ON_PAGINATION = 3;
 
@@ -71,18 +72,29 @@ public class NewsmanagementNewsController {
     public String filterNews(Model model,
                              HttpSession session,
                              @RequestParam("theme") Theme theme,
-                             @RequestParam("author") String author) {
-        List<News> news = newsService.viewAllNews(theme, 0, ITEMS_ON_PAGINATION);
+                             @RequestParam("author") int authorId) {
+
+        NewsSearchCriteria newsSearchCriteria = new NewsSearchCriteria(NewsSearchType.BY_AUTHOR);
+
+        List<Author> authors = new ArrayList<>();
+
+        Author author = new Author(theme.toString(),"Lowercase");
+        author.setId(authorId);
+
+        authors.add(author);
+
+        newsSearchCriteria.setAuthors(authors);
+
+        List<News> news = newsService.viewASingleNews(newsSearchCriteria);
+
         model.addAttribute(ALL_NEWS, news);
-        model.addAttribute(TOTAL_COUNT, newsService.totalCount(theme));
+        model.addAttribute(TOTAL_COUNT, news.size());
         model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
         model.addAttribute(ALL_THEMES, newsService.viewAllThemes());
         model.addAttribute(ALL_AUTHORS, authorService.read());
 
         session.setAttribute(THEME, theme);
-        session.setAttribute(AUTHOR, author);
-
-        logger.info("AUTHOR : " + author);
+        session.setAttribute(AUTHOR, authorId);
 
         return "filterHome";
     }

@@ -54,7 +54,7 @@
             </select>
             <select name="author">
                 <c:forEach items="${allAuthors}" var="allAuthors">
-                    <option value="${allAuthors}">${allAuthors.surname}</option>
+                    <option value="${allAuthors.id}">${allAuthors.surname}</option>
                 </c:forEach>
             </select>
             <input type="hidden" name="command" value="filter-news">

@@ -62,6 +62,7 @@ public class NewsServiceImpl implements NewsService {
             news = newsDao.viewASingleNews(searchCriteria.getTags());
         }
         if (searchType == NewsSearchType.BY_AUTHOR) {
+            System.out.println("AUTHORS GETTED : " + searchCriteria.getAuthors());
             news = newsDao.viewASingleNews(searchCriteria.getAuthors());
         }
 

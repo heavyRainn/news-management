@@ -41,15 +41,23 @@ public class AddCommentCommand implements Command {
 
         News news = newsService.viewASingleNews(newsSearchCriteria).get(0);
 
-        User user = (User) request.getSession().getAttribute(USER);
+        if (request.getSession().getAttribute(USER) == null) {
 
-        Comment comment = getCompleteComment(Integer.valueOf(request.getParameter(NEWS_ID)), text, user.getId());
+            return PageName.LOGIN_PAGE;
 
-        request.setAttribute(CONCRETE_NEWS, news);
+        } else {
 
-        commentService.create(comment);
+            User user = (User) request.getSession().getAttribute(USER);
 
-        return PageName.CONCRETE_NEWS_PAGE;
+            Comment comment = getCompleteComment(Integer.valueOf(request.getParameter(NEWS_ID)), text, user.getId());
+
+            request.setAttribute(CONCRETE_NEWS, news);
+
+            commentService.create(comment);
+
+            return PageName.CONCRETE_NEWS_PAGE;
+
+        }
     }
 
     private Comment getCompleteComment(int newsId, String text, int userId) {

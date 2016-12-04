@@ -11,6 +11,7 @@ import java.util.Set;
 public class NewsSearchCriteria {
 
     private NewsSearchType searchType;
+
     private int id;
     private String title;
     private Date date;

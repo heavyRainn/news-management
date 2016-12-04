@@ -51,8 +51,6 @@
                     cancelEdit(id);
                 } else if (result == "error") {
                     alert("Error on server");
-                } else if (result == "exists") {
-                    alert("Tag this id not exists");
                 }
             });
         }
@@ -68,8 +66,6 @@
                     cancelEdit(id);
                 } else if (result == "error") {
                     alert("Error on server");
-                } else if (result == "exists") {
-                    alert("Tag this id not exists");
                 }
             });
         }
