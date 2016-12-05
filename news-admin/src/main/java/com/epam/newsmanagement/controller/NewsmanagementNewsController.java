@@ -7,7 +7,6 @@ import com.epam.newsmanagement.service.CrudService;
 import com.epam.newsmanagement.service.NewsService;
 import com.epam.newsmanagement.util.search.NewsSearchCriteria;
 import com.epam.newsmanagement.util.search.NewsSearchType;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +19,6 @@ import java.util.List;
 
 @Controller
 public class NewsmanagementNewsController {
-
-    private static final Logger logger = Logger.getLogger(NewsmanagementNewsController.class);
 
     private static final String ITEMS_ON_PAGE = "itemsOnPage";
     private static final String TOTAL_COUNT = "totalCount";
@@ -78,7 +75,7 @@ public class NewsmanagementNewsController {
 
         List<Author> authors = new ArrayList<>();
 
-        Author author = new Author(theme.toString(),"Lowercase");
+        Author author = new Author(theme.toString(), AUTHOR);
         author.setId(authorId);
 
         authors.add(author);
@@ -154,7 +151,7 @@ public class NewsmanagementNewsController {
 
         newsService.attachAuthor(newsId, authorId);
 
-        return "redirect:/";
+        return "redirect:/seeNews/" + newsId;
     }
 
     private News buildNews(String title, Date date, String brief, String content, Theme theme) {

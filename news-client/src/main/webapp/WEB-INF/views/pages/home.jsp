@@ -37,7 +37,6 @@
 </head>
 <body>
 
-
 <div id="filter-form">
     <form action="news-client" method="post">
         <p>
@@ -48,7 +47,7 @@
             </select>
             <select name="author">
                 <c:forEach items="${allAuthors}" var="allAuthors">
-                    <option value="${allAuthors.id}">${allAuthors.surname}</option>
+                    <option value="${allAuthors.id}">${allAuthors.name} ${allAuthors.surname}</option>
                 </c:forEach>
             </select>
             <input type="hidden" name="command" value="filter-news">

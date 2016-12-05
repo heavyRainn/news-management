@@ -10,11 +10,17 @@
     <style>
         <%@include file="/resources/css/simplePagination.css" %>
     </style>
+    <style>
+        <%@include file="/resources/css/sumoselect.css" %>
+    </style>
     <script>
         <%@include file="/resources/js/jquery.min.js" %>
     </script>
     <script>
         <%@include file="/resources/js/jquery.simplePagination.js" %>
+    </script>
+    <script>
+        <%@include file="/resources/js/jquery.sumoselect.min.js" %>
     </script>
     <script>
         $(function () {
@@ -34,6 +40,11 @@
         function reset() {
             location.reload();
         }
+
+        $(document).ready(function () {
+            $('.themeSelect').SumoSelect();
+        });
+
     </script>
 </head>
 <body>
@@ -42,20 +53,20 @@
     <c:url value="/filterNews" var="filterNewsUrl"/>
     <form action="${filterNewsUrl}" method="post">
         <p>
-            <select name="theme">
+            <select class="themeSelect" name="theme" multiple="multiple" required>
                 <c:forEach items="${allThemes}" var="allThemes">
                     <option value="${allThemes}">${allThemes}</option>
                 </c:forEach>
             </select>
-            <select name="author">
+            <select name="author" class="themeSelect">
                 <c:forEach items="${allAuthors}" var="allAuthors">
-                    <option value="${allAuthors.id}">${allAuthors.surname}</option>
+                    <option value="${allAuthors.id}">${allAuthors.name} ${allAuthors.surname}</option>
                 </c:forEach>
             </select>
             <input type="hidden"
                    name="${_csrf.parameterName}"
                    value="${_csrf.token}"/>
-            <button style="width:123px" type="submit" class="btn1"><s:message code="button.filter"/></button>
+            <button type="submit" class="btn1"><s:message code="button.filter"/></button>
         </p>
     </form>
 </div>

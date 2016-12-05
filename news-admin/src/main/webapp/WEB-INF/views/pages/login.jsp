@@ -32,6 +32,10 @@
         <label for="password"><s:message code="label.password"/> :</label>
         <input type="password" id="password" name="password" required/>
     </p>
+    <p>
+        <label for="remember-me">Remember Me?</label>
+        <input type="checkbox" id="remember-me" name="remember-me"/>
+    </p>
     <input type="hidden"
            name="${_csrf.parameterName}"
            value="${_csrf.token}"/>

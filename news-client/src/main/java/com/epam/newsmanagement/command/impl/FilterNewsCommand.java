@@ -42,26 +42,25 @@ public class FilterNewsCommand implements Command {
         Theme theme = Theme.valueOf(request.getParameter(THEME));
         int authorId = Integer.valueOf(request.getParameter(AUTHOR));
 
-        logger.info("AUTHOR ID : " + authorId);
-
         NewsSearchCriteria newsSearchCriteria = new NewsSearchCriteria(NewsSearchType.BY_AUTHOR);
 
         List<Author> authors = new ArrayList<>();
 
-        Author author = new Author(theme.toString(), "Lowercase");
+        Author author = new Author(theme.toString(),AUTHOR);
         author.setId(authorId);
 
         authors.add(author);
 
         newsSearchCriteria.setAuthors(authors);
 
-        List<News> news = newsService.viewASingleNews(newsSearchCriteria);
+        //List<News> news = newsService.viewASingleNews(newsSearchCriteria);
+        List<News> news = newsService.viewAllNews(theme, 0, ITEMS_ON_PAGE);
 
         logger.info("NEEEWS : " + news.toString());
 
-        request.setAttribute(ALL_NEWS, newsService.viewAllNews(theme, 0, ITEMS_ON_PAGE));
+        request.setAttribute(ALL_NEWS, news);
         //request.setAttribute(ALL_NEWS, news);
-        request.setAttribute(TOTAL_COUNT, news.size());
+        request.setAttribute(TOTAL_COUNT, newsService.totalCount(theme));
         request.setAttribute(ITEMS_ON_PAGE_STRING, ITEMS_ON_PAGE);
         request.setAttribute(ALL_THEMES, newsService.viewAllThemes());
         request.setAttribute(ALL_AUTHORS, authorService.read());
