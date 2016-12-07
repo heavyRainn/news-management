@@ -19,7 +19,7 @@
                 displayedPages: 5,
                 edges: 2,
                 currentPage: 0,
-                hrefTextPrefix: 'news-client?command=filter-pagination&page=',
+                hrefTextPrefix: '/news-admin/filterNews/page-',
                 hrefTextSuffix: '',
                 prevText: 'Prev',
                 nextText: 'Next',

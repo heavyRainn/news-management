@@ -5,10 +5,10 @@
 <html>
 
 <head>
-
     <style>
         <%@include file="/resources/css/style.css" %>
     </style>
+
     <title><t:getAsString name="title"/></title>
 </head>
 

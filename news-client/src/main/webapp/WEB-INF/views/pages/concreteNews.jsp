@@ -3,9 +3,6 @@
 <html>
 <head>
     <title>Concrete news page</title>
-    <style>
-        <%@include file="/resources/css/home.css" %>
-    </style>
     <script>
         <%@include file="/resources/js/jquery.min.js" %>
     </script>

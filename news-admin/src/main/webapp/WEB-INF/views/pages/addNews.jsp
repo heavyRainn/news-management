@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <html>
 <head>
@@ -12,7 +13,7 @@
 <body>
 <div id="creation-form">
     <c:url value="/addNews" var="addNewsUrl"/>
-    <form action="${addNewsUrl}" method="post">
+    <form action="${addNewsUrl}" method="post" enctype="multipart/form-data">
         <p>
             <label for="title"><s:message code="label.news.title"/> :</label>
             <input type="text" id="title" name="title" required/>
@@ -26,20 +27,23 @@
             <input size="100" type="text" id="brief" name="brief" required/>
         </p>
         <p>
-            <label for="content"><s:message code="label.news.content"/> :</label>
-            <input size="100" ype="text" id="content" name="content" required/>
+            <label>Photo</label>:
+            <input type="file" name="photo" accept="image/jpeg, image/png, image/gif"><br/>
         </p>
         <p>
-            <select name="theme">
-                <c:forEach items="${allThemes}" var="allThemes">
-                    <option value="${allThemes}">${allThemes}</option>
-                </c:forEach>
-            </select>
-            <select name="author">
-                <c:forEach items="${allAuthors}" var="allAuthors">
-                    <option value="${allAuthors.id}">${allAuthors.surname}</option>
-                </c:forEach>
-            </select>
+            <label for="content"><s:message code="label.news.content"/> :</label>
+            <input size="100" type="text" id="content" name="content" required/>
+        </p>
+        <select name="theme">
+            <c:forEach items="${allThemes}" var="allThemes">
+                <option value="${allThemes}">${allThemes}</option>
+            </c:forEach>
+        </select>
+        <select name="author">
+            <c:forEach items="${allAuthors}" var="allAuthors">
+                <option value="${allAuthors.id}">${allAuthors.name} ${allAuthors.surname}</option>
+            </c:forEach>
+        </select>
         </p>
         <input type="hidden"
                name="${_csrf.parameterName}"

@@ -48,6 +48,9 @@
         <javax.servlet.version>3.0.1</javax.servlet.version>
         <javax.servlet.jsp.version>2.2</javax.servlet.jsp.version>
         <jstl.version>1.2</jstl.version>
+        <commons.fileupload.version>1.3.2</commons.fileupload.version>
+        <commons.io.version>2.5</commons.io.version>
+        <swagger.version>2.5.0</swagger.version>
 
     </properties>
 
@@ -164,6 +167,24 @@
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
             <version>${apachetiles.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons.fileupload.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
 
     </dependencies>

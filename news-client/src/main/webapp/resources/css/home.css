@@ -29,9 +29,14 @@
 }
 
 #resetButton{
+    height: 32px;
     position: fixed;
-    right: 51.4%;
-    top: 12.6%;
+    right: 42%;
+    top: 12.7%;
+}
+
+.btn1{
+    height: 32px;
 }
 
 #menu-v li, #menu-v a {

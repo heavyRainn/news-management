@@ -32,7 +32,7 @@ public class NewsmanagementAuthorsController {
 
     @GetMapping("/page-{pageNumber}")
     public String pagination(@PathVariable int pageNumber,
-                                       Model model) {
+                             Model model) {
         pageNumber--;
         model.addAttribute(ITEMS_ON_PAGE, ITEMS_ON_PAGINATION);
         model.addAttribute(TOTAL_COUNT, authorService.totalCount());
@@ -43,7 +43,7 @@ public class NewsmanagementAuthorsController {
 
     @PostMapping
     public String add(@RequestParam("name") String name,
-                             @RequestParam("surname") String surname) {
+                      @RequestParam("surname") String surname) {
         authorService.create(new Author(name, surname));
         return "redirect:/authors";
     }

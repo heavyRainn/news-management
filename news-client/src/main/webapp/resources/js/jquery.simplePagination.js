@@ -19,7 +19,7 @@
 				displayedPages: 5,
 				edges: 2,
 				currentPage: 0,
-				hrefTextPrefix: 'news-client?command=pagination&page=',
+				hrefTextPrefix: 'page-',
 				hrefTextSuffix: '',
 				prevText: 'Prev',
 				nextText: 'Next',
@@ -34,7 +34,8 @@
 				useStartEdge : true,
 				useEndEdge : true,
 				onPageClick: function(pageNumber, event) {
-					//
+					// Callback triggered when a page is clicked
+					// Page number is given as an optional parameter
 				},
 				onInit: function() {
 					// Callback triggered immediately after initialization
@@ -347,7 +348,7 @@
 						.find('input')
 						.focus()
 						.click(function(event) {
-							document.getElementById('pagination-form').submit();
+							// prevent input number arrows from bubbling a click event on $ellip
 							event.stopPropagation();
 						})
 						.keyup(function(event) {

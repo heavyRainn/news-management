@@ -59,6 +59,7 @@
             $.post("/news-admin/tags/delete", {id: parseInt(id)}, function (result) {
                 console.log("Have response: " + result);
                 if (result == "success") {
+                    $('#' + id).remove()
                     $("#tags-form").prepend(successMsg('Tag successfully deleted'));
                     setTimeout(function () {
                         $(".msg").remove();

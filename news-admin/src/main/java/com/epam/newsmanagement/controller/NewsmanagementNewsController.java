@@ -7,18 +7,27 @@ import com.epam.newsmanagement.service.CrudService;
 import com.epam.newsmanagement.service.NewsService;
 import com.epam.newsmanagement.util.search.NewsSearchCriteria;
 import com.epam.newsmanagement.util.search.NewsSearchType;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class NewsmanagementNewsController {
+
+    Logger logger = Logger.getLogger(NewsmanagementNewsController.class);
 
     private static final String ITEMS_ON_PAGE = "itemsOnPage";
     private static final String TOTAL_COUNT = "totalCount";
@@ -135,14 +144,17 @@ public class NewsmanagementNewsController {
         return "addNews";
     }
 
-    @RequestMapping(value = "/addNews", method = RequestMethod.POST)
+    @PostMapping("/addNews")
     public String addNews(@RequestParam("title") String title,
                           @RequestParam("date") Date date,
                           @RequestParam("brief") String brief,
                           @RequestParam("content") String content,
+                          @RequestParam MultipartFile photo,
                           @RequestParam("theme") Theme theme,
-                          @RequestParam("author") int authorId) {
-        newsService.addNews(buildNews(title, date, brief, content, theme));
+                          @RequestParam("author") int authorId) throws IOException {
+        String photoPath = savePhoto(photo);
+
+        newsService.addNews(buildNews(title, date, brief, content, theme, photoPath));
 
         NewsSearchCriteria newsSearchCriteria = new NewsSearchCriteria(NewsSearchType.BY_TITLE);
         newsSearchCriteria.setTitle(title);
@@ -152,9 +164,16 @@ public class NewsmanagementNewsController {
         newsService.attachAuthor(newsId, authorId);
 
         return "redirect:/seeNews/" + newsId;
+
     }
 
-    private News buildNews(String title, Date date, String brief, String content, Theme theme) {
+    private String savePhoto(MultipartFile photo) throws IOException {
+        String pathToPhoto = photo.getOriginalFilename();
+        photo.transferTo(new File(pathToPhoto));
+        return pathToPhoto;
+    }
+
+    private News buildNews(String title, Date date, String brief, String content, Theme theme, String photoPath) {
         News news = new News();
 
         news.setMainTitle(title);
@@ -162,6 +181,7 @@ public class NewsmanagementNewsController {
         news.setDate(date);
         news.setTheme(theme);
         news.setNewsText(content);
+        news.setPhoto(photoPath);
 
         return news;
     }

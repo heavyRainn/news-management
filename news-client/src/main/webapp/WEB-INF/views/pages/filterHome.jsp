@@ -11,11 +11,17 @@
     <style>
         <%@include file="/resources/css/simplePagination.css" %>
     </style>
+    <style>
+        <%@include file="/resources/css/sumoselect.css" %>
+    </style>
     <script>
         <%@include file="/resources/js/jquery.min.js" %>
     </script>
     <script>
         <%@include file="/resources/js/jquery.simplePagination.filter.js" %>
+    </script>
+    <script>
+        <%@include file="/resources/js/jquery.sumoselect.min.js" %>
     </script>
     <script>
         $(function () {
@@ -35,6 +41,11 @@
         function reset() {
             window.location = "http://localhost:8080/news-client/news-client?command=pagination&page=1";
         }
+
+
+        $(document).ready(function () {
+            $('.themeSelect').SumoSelect();
+        });
     </script>
 </head>
 <body>
@@ -42,7 +53,7 @@
 <div id="filter-form">
     <form action="news-client" method="post">
         <p>
-            <select name="theme">
+            <select class="themeSelect" name="theme" multiple="multiple" required>
                 <c:forEach items="${allThemes}" var="t">
                     <c:if test="${theme  eq t}">
                         <option selected value="${t}">${t}</option>
@@ -52,7 +63,7 @@
                     </c:if>
                 </c:forEach>
             </select>
-            <select name="author">
+            <select name="author" class="themeSelect">
                 <c:forEach items="${allAuthors}" var="allAuthors">
                     <option value="${allAuthors}">${allAuthors.name} ${allAuthors.surname}</option>
                 </c:forEach>

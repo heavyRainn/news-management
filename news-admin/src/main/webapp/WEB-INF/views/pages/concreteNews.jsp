@@ -30,11 +30,20 @@
                             rootP.innerHTML = result.date + " " + result.text;
                             console.log(rootP.innerHTML);
                             $("#comments_list").append(rootP);
+
+                            $("#news-container").prepend(successMsg('Comment successfully add'));
+                            setTimeout(function () {
+                                $(".msg").remove();
+                            }, 5000);
                         } else {
                             alert("Error");
                         }
                     }
             );
+        }
+
+        function successMsg(text) {
+            return '<div class="msg">' + text + '</div>';
         }
     </script>
 </head>
@@ -48,7 +57,7 @@
             <p><c:out value="${concreteNews.shortTitle}"/></p>
             <p><c:out value="${concreteNews.newsText}"/></p>
             <p><c:out value="${concreteNews.date}"/></p>
-            <p><c:out value="${concreteNews.photo}"/></p>
+            <p><img src="<c:url value="/resources/photo/${concreteNews.photo}"/>" alt="${concreteNews.photo}"/></p>
             <p><c:out value="${concreteNews.theme}"/></p>
             <p>
                 <s:message code="label.authors"/> (<c:forEach items="${concreteNews.authors}" var="concreteNewsAuthors">
@@ -62,7 +71,7 @@
                 </c:forEach>
             </p>
             <p></p>
-            <div id="comments_list">
+            <div id=" comments_list">
                 <p>
                     <c:forEach items="${concreteNews.comments}" var="concreteNewsComments">
                         <c:out value="${concreteNewsComments.date}"/>

@@ -63,16 +63,21 @@
         }
 
         function deleteAuthor(id) {
-            $.post("/news-admin/authors/delete", {id: parseInt(id)}, function (result) {
-                console.log("Have response: " + result);
-                if (result == "success") {
-                    $("#authors-form").prepend(successMsg('Author successfully deleted'));
-                    setTimeout(function () {
-                        $(".msg").remove();
-                    }, 5000);
-                    cancelEdit(id);
-                } else {
-                    alert("Error on server");
+            $.ajax({
+                type: "POST",
+                url: "/news-admin/authors/delete",
+                data: {id: parseInt(id)},
+                success: function (result) {
+                    if (result == "success") {
+                        $('#' + id).remove()
+                        $("#authors-form").prepend(successMsg('Author successfully deleted'));
+                        setTimeout(function () {
+                            $(".msg").remove();
+                        }, 5000);
+                        cancelEdit(id);
+                    } else {
+                        alert("Error on server");
+                    }
                 }
             });
         }

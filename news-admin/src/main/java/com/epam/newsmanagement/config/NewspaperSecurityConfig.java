@@ -23,7 +23,7 @@ public class NewspaperSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login", "/resources").permitAll()
+                .antMatchers("/login", "/resources/").permitAll()
                 .antMatchers("/").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
