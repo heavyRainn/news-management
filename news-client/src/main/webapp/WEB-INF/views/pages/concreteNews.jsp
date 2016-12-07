@@ -22,7 +22,7 @@
                 <p><c:out value="${concreteNews.shortTitle}"/></p>
                 <p><c:out value="${concreteNews.newsText}"/></p>
                 <p><c:out value="${concreteNews.date}"/></p>
-                <p><c:out value="${concreteNews.photo}"/></p>
+                <p><img src="<c:url value="/resources/photo/${concreteNews.photo}"/>" alt="${concreteNews.photo}"/></p>
                 <p><c:out value="${concreteNews.theme}"/></p>
                 <p>
                     Authors (<c:forEach items="${concreteNews.authors}" var="concreteNewsAuthors">
