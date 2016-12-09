@@ -3,6 +3,7 @@ package com.epam.newsmanagement.controller;
 import com.epam.newsmanagement.entity.Comment;
 import com.epam.newsmanagement.service.CrudService;
 import com.epam.newsmanagement.service.UserService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
 
+@Api("Comments controller")
 @RestController
 @RequestMapping("/comments")
 public class NewsmanagementCommentsController {

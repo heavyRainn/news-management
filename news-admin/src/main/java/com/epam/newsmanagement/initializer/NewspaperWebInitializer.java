@@ -19,7 +19,7 @@ public class NewspaperWebInitializer extends AbstractAnnotationConfigDispatcherS
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[]{NewspaperRootConfig.class, NewspaperWebConfig.class,
-                NewspaperSecurityConfig.class, NewspaperSwaggerConfig.class};
+                NewspaperSecurityConfig.class};
     }
 
     @Override

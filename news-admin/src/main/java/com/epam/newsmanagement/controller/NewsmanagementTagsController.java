@@ -2,11 +2,13 @@ package com.epam.newsmanagement.controller;
 
 import com.epam.newsmanagement.entity.Tag;
 import com.epam.newsmanagement.service.CrudService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@Api("Tags controller")
 @Controller
 @RequestMapping("/tags")
 public class NewsmanagementTagsController {

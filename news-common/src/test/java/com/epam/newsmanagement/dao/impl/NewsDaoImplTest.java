@@ -115,18 +115,6 @@ public class NewsDaoImplTest {
 
     @Test
     @Rollback
-    public void testViewASingleNewsByAuthors() {
-        List<Author> authors = new ArrayList<>();
-        authors.add(new Author(AUTHOR_NAME, AUTHOR_SURNAME));
-
-        List<News> news = newsDao.viewASingleNews(authors);
-
-        Assert.assertFalse(news.isEmpty());
-        Assert.assertTrue(news.get(0) instanceof News);
-    }
-
-    @Test
-    @Rollback
     public void testAddNews() {
         List<News> news = newsDao.viewAllNews();
         int sizeBefore = news.size();

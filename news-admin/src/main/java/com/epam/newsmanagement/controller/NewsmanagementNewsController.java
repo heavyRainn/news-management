@@ -7,14 +7,12 @@ import com.epam.newsmanagement.service.CrudService;
 import com.epam.newsmanagement.service.NewsService;
 import com.epam.newsmanagement.util.search.NewsSearchCriteria;
 import com.epam.newsmanagement.util.search.NewsSearchType;
+import io.swagger.annotations.Api;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -24,10 +22,10 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+@Api("News controller")
 @Controller
+@RequestMapping("/")
 public class NewsmanagementNewsController {
-
-    Logger logger = Logger.getLogger(NewsmanagementNewsController.class);
 
     private static final String ITEMS_ON_PAGE = "itemsOnPage";
     private static final String TOTAL_COUNT = "totalCount";

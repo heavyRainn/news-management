@@ -3,6 +3,7 @@ package com.epam.newsmanagement.config;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
@@ -13,12 +14,15 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Locale;
 import java.util.Properties;
 
 @EnableWebMvc
 @Configuration
+@EnableSwagger2
+@Import(NewspaperSwaggerConfig.class)
 public class NewspaperWebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
@@ -41,8 +45,8 @@ public class NewspaperWebConfig extends WebMvcConfigurerAdapter {
                 .addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
 
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 
     }
 
